@@ -2,6 +2,6 @@ import React from 'react'
 
 export const Who = () => {
   return (
-    <div className='h-screen bg-gray-900 snap-center'>Who</div>
+    <div className='h-screen snap-center'>Who</div>
   )
 }
