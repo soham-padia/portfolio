@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const Who = () => {
+export const Skills = () => {
   return (
     <div className='h-screen flex snap-center justify-center'>
       <div className='h-full snap-center flex w-screen px-20 p-2 justify-between'>
@@ -12,7 +12,7 @@ export const Who = () => {
             <h1 className='font-mono text-5xl'>SKILLS</h1>
             <br />
             <p className='text-[#da4ea2]'>Languages</p>
-            <h2 className='text-2xl'> C, Cpp, Bash/Shell, Rust, Java, SQL, Dart, Typescript, Javascript, Go, HTML, css.</h2>
+            <h2 className='text-2xl'> C, Cpp, Bash/Shell, Rust, Java, SQL, Dart, Typescript, Javascript, Go, HTML, css (tailwind and bootstrap included).</h2>
             <br />
             <br />
             <p className='text-[#da4ea2]'>Technologies/Frameworks </p>

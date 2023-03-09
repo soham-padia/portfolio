@@ -8,8 +8,7 @@ export const Navbar = () => {
               <img src="img/transparent_logo.png" alt="SOHAM PADIA" className='object-cover h-20 w-20' />
               <ul className='flex gap-5 list-none'>
                 <li className='cursor-pointer'>Home</li>
-                <li className='cursor-pointer'>Studio</li>
-                <li className='cursor-pointer'>Works</li>
+                <li className='cursor-pointer'>Skills</li>
                 <li className='cursor-pointer'>Contact</li>
               </ul>
             </div>
