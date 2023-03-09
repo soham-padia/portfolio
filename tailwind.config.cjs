@@ -5,7 +5,13 @@ module.exports = {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      keyframes: {
+        animate: {
+          'to': { transform: 'translateY(20px)' },
+        }
+      }
+    },
   },
   plugins: [],
 }
