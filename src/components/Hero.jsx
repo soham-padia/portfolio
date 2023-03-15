@@ -19,24 +19,22 @@ export const Hero = () => {
         </div>
         <div className="basis-3/5 flex flex-col justify-center items-center gap-5 animate-[animate_2s_infinite_ease_alternate]">
           <div className="text-slate-300 font-mono">
-            <div className="text-6xl">
+            <div className="text-6xl flex">
+              <p className="whitespace-pre-wrap">Hi, I'm{" "}</p>
             <Typewriter
               onInit={(typewriter) => {
                 typewriter
-                  .typeString("Hi, I'm Soham Padia")
+                  .typeString("Soham Padia")
                   .callFunction(() => {
                     console.log("String typed out!");
                   })
-                  .pauseFor(500)
+                  .pauseFor(1000)
                   .deleteChars(11)
-                  .callFunction(() => {
-                    console.log("All strings were deleted");
-                  })
                   .typeString("सोहम पडिया")
-                  .pauseFor(500)
+                  .pauseFor(1000)
                   .deleteChars(10)
                   .typeString("સોહમ પડિયા")
-                  .pauseFor(500)
+                  .pauseFor(1000)
                   .deleteChars(10)
                   .typeString("SOHAM PADIA")
                   .start();
@@ -48,27 +46,27 @@ export const Hero = () => {
               About me: I am a student of Information Technology Dwarkadas{" "}
             </p>
             <p className="whitespace-pre-wrap">
-              {" "}
+              {"          "}
               J. Sanghvi College of Engineering. I have experience{" "}
             </p>
             <p className="whitespace-pre-wrap">
-              {" "}
+              {"          "}
               in building Android apps, web development and
             </p>
             <p className="whitespace-pre-wrap">
-              {" "}
+              {"          "}
               training pre-configured AI models using Python.
             </p>
             <p className="whitespace-pre-wrap">
-              {" "}
+              {"          "}
               Proficient in React, Angular, and Django frameworks.
             </p>
             <p className="whitespace-pre-wrap">
-              {" "}
+              {"          "}
               Interested in exploring advanced concepts such as
             </p>
             <p className="whitespace-pre-wrap">
-              {" "}
+              {"          "}
               microservices, IoT, blockchain, Kubernetes, and Docker
             </p>
           </div>

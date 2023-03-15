@@ -2,9 +2,9 @@ import React from 'react'
 
 export const Skills = () => {
   return (
-    <div className='h-screen flex snap-center justify-center'>
-      <div className='h-full snap-center flex w-screen px-20 p-2 justify-between'>
-        <div className='basis-1/2'>
+    <div className='h-screen backdrop-blur-lg shadow-inner rounded-lg flex snap-center justify-center'>
+      <div className='h-9/10 snap-center rounded-lg backdrop-blur-md shadow-lg m-10 bg-gradient-to-tl from-[#303030] via-black to-[#303030] flex w-screen px-20 p-2 justify-between'>
+        <div className='basis-1/2 py-40 px-20'>
           
         </div>
         <div className='basis-1/2 flex flex-col justify-center items-center gap-5'>
