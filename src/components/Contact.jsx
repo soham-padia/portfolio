@@ -25,7 +25,7 @@ export const Contact = () => {
   }
 
   return (
-    <div className="h-screen snap-center">
+    <div id="contact" className="h-screen snap-center">
       <div className="w-screen h-screen flex justify-between gap-20">
         <div className="basis-1/2 flex items-center justify-end">
           <form ref={ref} onSubmit={handleSubmit} className="w-[500px] flex flex-col gap-6 ">
