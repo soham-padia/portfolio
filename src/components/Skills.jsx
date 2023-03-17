@@ -24,7 +24,7 @@ export const Skills = () => {
             <h2 className='text-2xl'> Linux, Windows, Android, and Web</h2>
             <br />
             <br />
-            <motion.button whileHover={{scale:1.2}} whileTap={{scale:0.9}} onClick={()=>{document.getElementById('contact').scrollIntoView({behavior:'smooth'})}} className='bg-[#35353533] rounded-md hover:bg-[#353535] p-3'>See More</motion.button>
+            <motion.button whileHover={{scale:1.2}} whileTap={{scale:0.9}} onClick={()=>{document.getElementById('project').scrollIntoView({behavior:'smooth'})}} className='bg-[#35353533] rounded-md hover:bg-[#353535] p-3'>See More</motion.button>
           </div>
         </div>
       </div>
