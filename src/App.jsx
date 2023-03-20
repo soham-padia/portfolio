@@ -7,11 +7,11 @@ import { Skills } from "./components/Skills";
 
 function App() {
   return (
-    <div className=" bg-gradient-to-br from-[#202020] via-black to-[#2e2e2e] text-white">
+    <div className=" bg-gradient-to-br scrollbar-hide from-[#202020] via-black to-[#2e2e2e] text-white">
       <div className="backdrop-blur-lg absolute backdrop-filter bg-opacity-30 bg-transparent top-0 z-50">
         <Navbar></Navbar>
       </div>
-      <div className="h-screen snap-y snap-mandatory scroll-smooth overflow-scroll  ">
+      <div className="h-screen snap-y scrollbar-hide snap-mandatory scroll-smooth overflow-scroll  ">
         <div className="snap-center shrink-0">
           <Hero />
         </div>

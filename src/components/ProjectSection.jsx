@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 
 export const ProjectSection = (props) => {
   return (
-    <div className={`h-full bg-[${props.bgColor}] text-[${props.textColor}]`}>
+    <div className={`h-full `}>
       <div className={`flex flex-row p-4 h-full items-center`}>
         <div className="basis-1/2 flex flex-col h-full justify-center">
           <h1 className={`text-5xl font-bold`}>{props.title}</h1>

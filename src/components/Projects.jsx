@@ -43,12 +43,12 @@ export const Projects = () => {
         Notable Projects --{">"}
       </p>
       <div className=" basis-10/12">
-        <div className="flex flex-row snap-x snap-mandatory scroll-smooth overflow-x-auto h-full p-5 flex-nowrap items-center">
+        <div className="flex flex-row snap-x snap-mandatory scroll-smooth overflow-x-auto scrollbar-hide h-full p-5 flex-nowrap items-center">
           {projectInfo.map((project, index) => (
             <motion.div
-              className={` bg-[${project.bgColor}] text-[${project.textColor}] bg-cover snap-center m-3 w-full h-full shadow-md rounded-none flex-shrink-0`}
+              className={` bg-[#111111] text-white bg-cover snap-center m-3 w-full h-full shadow-md rounded-none flex-shrink-0`}
             >
-              <ProjectSection bgColor={project.bgColor} textColor={project.textColor} image={project.image} title={project.title} description={project.description} gitLink={project.gitLink}></ProjectSection>
+              <ProjectSection image={project.image} title={project.title} description={project.description} gitLink={project.gitLink}></ProjectSection>
             </motion.div>
           ))}
         </div>
