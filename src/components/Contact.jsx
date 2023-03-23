@@ -29,7 +29,7 @@ export const Contact = () => {
     <div id="contact" className="md:h-screen h-fit snap-center">
       <div className="w-screen md:h-screen h-fit flex flex-col md:flex-row justify-between gap-20">
         <motion.div initial={{opacity:0}} whileInView={{opacity:1}} transition={{delay:0.25}} className="basis-1/2 flex items-center justify-end">
-          <form ref={ref} onSubmit={handleSubmit} className="w-[500px] flex flex-col gap-6 ">
+          <form ref={ref} onSubmit={handleSubmit} className="w-[500px] flex flex-col md:gap-6 gap-3 px-4 md:px-0">
             <h1 className="font-mono font-light text-3xl">Contact Me</h1>
             <input type="text" name="name" placeholder="Name" required  className="p-5 text-black font-semibold bg-gray-300 border-none rounded-md"/>
             <input type="email" name="email" placeholder="Email" required className="p-5 text-black font-semibold bg-gray-300 border-none rounded-md"/>
