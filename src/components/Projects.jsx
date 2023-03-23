@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { ProjectSection } from "./ProjectSection";
 
 export const Projects = () => {
+  
   const projectInfo = [
     {
       title: "My Portfolio Project",
@@ -26,7 +27,7 @@ export const Projects = () => {
     {
       title: "An Angular website with Supabase as Backend",
       description:
-      "I dedicated a considerable amount of effort to creating this web application using Angular, Tailwind, Supabase, and TypeScript as the primary technologies. Not only did this project enable me to gain a strong understanding of the Angular framework, but it also allowed me to explore the benefits of TypeScript and improve my coding skills for the long term. Overall, I am proud of the hard work I invested in this project, and it has been a significant learning experience for me.",
+        "I invested a lot of effort in creating this web app using Angular, Tailwind, Supabase, and TypeScript. It helped me understand Angular and improve my coding skills. Overall, it was a valuable learning experience for me.",
       image: "img/p3.gif",
       bgColor: "#0097b2",
       textColor: "#000000",
@@ -37,26 +38,27 @@ export const Projects = () => {
   return (
     <motion.div
       id="project"
-      className="h-screen font-mono backdrop-blur-lg shadow-inner rounded-lg flex flex-col py-20 snap-center justify-center"
+      className="md:h-screen h-fit font-mono backdrop-blur-lg md:shadow-inner md:rounded-lg flex flex-col py-20 snap-center md:justify-center"
     >
-      <p className=" self-center basis-1/12 justify-self-center p-6 text-6xl">
+      <motion.p initial={{opacity:0}} whileInView={{opacity:1}} transition={{delay:0.25}} className=" self-center  md:basis-1/12 justify-self-center md:p-4 text-6xl">
         Notable Projects --{">"}
-      </p>
-      <div className=" basis-10/12">
-        <div className="flex flex-row snap-x snap-mandatory scroll-smooth overflow-x-auto scrollbar-hide h-full p-5 flex-nowrap items-center">
+      </motion.p>
+      <motion.div initial={{opacity:0}} whileInView={{opacity:1}} transition={{delay:0.25}} className=" md:basis-10/12">
+        <div className="flex flex-row snap-x snap-mandatory scroll-smooth overflow-x-auto scrollbar-hide md:h-full md:p-5 flex-nowrap items-center">
           {projectInfo.map((project, index) => (
             <motion.div
-              className={` bg-[#111111] text-white bg-cover snap-center m-3 w-full h-full shadow-md rounded-none flex-shrink-0`}
+              className={` bg-[#111111] text-white bg-cover snap-center md:m-3 w-full h-full shadow-md rounded-none flex-shrink-0`}
             >
               <ProjectSection image={project.image} title={project.title} description={project.description} gitLink={project.gitLink}></ProjectSection>
             </motion.div>
           ))}
         </div>
-      </div>
+      </motion.div>
       <motion.button
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
-        className="basis-1/12 bg-[#333333] w-fit self-end rounded-lg p-4 px-20 mx-4"
+        className="md:basis-1/12 bg-[#333333] w-fit self-end rounded-lg p-4 px-20 mx-4"
+        initial={{opacity:0}} whileInView={{opacity:1}} transition={{delay:0.25}}
         onClick={() => {
           document
             .getElementById("contact")

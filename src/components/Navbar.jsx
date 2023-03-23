@@ -4,15 +4,15 @@ import { motion } from "framer-motion";
 
 export const Navbar = () => {
   return (
-    <div className="flex justify-center ">
-      <div className="w-screen flex justify-between items-center px-20">
+    <div className="flex justify-center sm:w-full">
+      <div className="w-screen flex justify-between items-center px-10 lg:px-20">
         <div className="flex items-center gap-12">
           <img
             src="img/transparent_logo.png"
             alt="SOHAM PADIA"
             className="object-cover h-14 w-14"
           />
-          <ul className="flex gap-5 list-none">
+          <ul className="lg:flex hidden gap-5 list-none">
             <motion.li onClick={()=>{document.getElementById('hero').scrollIntoView({behavior:'smooth'})}}  whileHover={{scale:1.2}} whileTap={{scale:0.9}} className="cursor-pointer">Home</motion.li>
             <motion.li onClick={()=>{document.getElementById('skill').scrollIntoView({behavior:'smooth'})}} whileHover={{scale:1.2}} whileTap={{scale:0.9}} className="cursor-pointer">Skills</motion.li>
             <motion.li onClick={()=>{document.getElementById('project').scrollIntoView({behavior:'smooth'})}} whileHover={{scale:1.2}} whileTap={{scale:0.9}} className="cursor-pointer">Projects</motion.li>
