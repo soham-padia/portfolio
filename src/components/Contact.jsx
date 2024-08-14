@@ -2,6 +2,7 @@ import emailjs from "@emailjs/browser";
 import React,{useRef, useState} from "react";
 import Map from "./Map";
 import { motion } from "framer-motion";
+import { Footer } from "./Footer";
 
 export const Contact = () => {
 
@@ -50,6 +51,9 @@ export const Contact = () => {
           <Map/>
         </motion.div>
       </div>
+      {/* <div className="backdrop-blur-lg absolute backdrop-filter bg-opacity-30 w-screen bg-transparent"> */}
+        <Footer></Footer>
+      {/* </div> */}
     </div>
   );
 };
