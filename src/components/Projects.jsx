@@ -38,7 +38,7 @@ export const Projects = () => {
   return (
     <motion.div
       id="project"
-      className="md:h-screen h-fit font-mono backdrop-blur-lg md:shadow-inner md:rounded-lg flex flex-col py-20 snap-center md:justify-center"
+      className="md:h-screen h-fit font-mono backdrop-blur-none md:shadow-inner md:rounded-lg flex flex-col py-20 snap-center md:justify-center"
     >
       <motion.p initial={{opacity:0}} whileInView={{opacity:1}} transition={{delay:0.25}} className=" self-center  md:basis-1/12 justify-self-center md:p-4 text-6xl">
         Notable Projects --{">"}
@@ -47,7 +47,7 @@ export const Projects = () => {
         <div className="flex flex-row snap-x snap-mandatory scroll-smooth overflow-x-auto scrollbar-hide md:h-full md:p-5 flex-nowrap items-center">
           {projectInfo.map((project, index) => (
             <motion.div
-              className={` bg-[#111111] text-white bg-cover snap-center md:m-3 w-full h-full shadow-md rounded-none flex-shrink-0`}
+              className={` bg-white text-black bg-cover snap-center md:m-3 w-full h-full shadow-md rounded-none flex-shrink-0`}
             >
               <ProjectSection image={project.image} title={project.title} description={project.description} gitLink={project.gitLink}></ProjectSection>
             </motion.div>
@@ -55,9 +55,9 @@ export const Projects = () => {
         </div>
       </motion.div>
       <motion.button
-        whileHover={{ scale: 1.1 }}
-        whileTap={{ scale: 0.9 }}
-        className="md:basis-1/12 bg-[#333333] w-fit self-end rounded-lg p-4 px-20 mx-4"
+        whileHover={{ scale: 1.05 }}
+        whileTap={{ scale: 0.95 }}
+        className="md:basis-1/12 bg-[#CCCCCC] w-fit self-end rounded-lg p-4 px-20 mx-4"
         initial={{opacity:0}} whileInView={{opacity:1}} transition={{delay:0.25}}
         onClick={() => {
           document

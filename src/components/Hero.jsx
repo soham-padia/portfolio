@@ -14,7 +14,7 @@ export const Hero = () => {
           <h1 className="font-mono text-2xl md:text-5xl">
             “Taking a new step, uttering a new word, is what people fear most.”
           </h1>
-          <p className="text-[#da4ea2]">~ Fyodor Dostoevsky</p>
+          <p className="text-[#25b15d]">~ Fyodor Dostoevsky</p>
           <h2>I am a coder who likes to code.</h2>
           <motion.button
             whileFocus={{ scale: 1.2 }}
@@ -24,13 +24,13 @@ export const Hero = () => {
                 .getElementById("skill")
                 .scrollIntoView({ behavior: "smooth" });
             }}
-            className="bg-[#35353533] rounded-md hover:bg-[#353535] p-3"
+            className="bg-[#CACACACC] rounded-md hover:bg-[#CACACA] p-3"
           >
             Learn More
           </motion.button>
         </motion.div>
         <motion.div initial={{opacity:0}} whileInView={{opacity:1}} transition={{delay:0.25}} className="mt-20 mb-10 md:mb-0 md:mt-0 md:basis-3/5 basis-1/2 flex md:p-2 flex-col w-fit justify-center items-center gap-5 animate-[animate_2s_infinite_ease_alternate]">
-          <div className="text-slate-300 md:w-3/4 font-mono">
+          <div className="text-slate-800 md:w-3/4 font-mono">
             <div className="md:text-6xl text-2xl flex w-fit">
               <p className="whitespace-pre-wrap">Hi, I'm </p>
               <Typewriter

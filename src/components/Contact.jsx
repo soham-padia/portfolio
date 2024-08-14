@@ -41,7 +41,7 @@ export const Contact = () => {
               required
               className="p-5 text-black font-semibold bg-gray-300 border-none rounded-md"
             ></textarea>
-            <button type="submit" disabled={loading} className="bg-[#da4ea2] p-5 border-none rounded-md">Send</button>
+            <button type="submit" disabled={loading} className="bg-[#25b15d] p-5 border-none rounded-md">Send</button>
             {success && 
               "Your message has been sent. I'll get back to you soon :)"}
           </form>

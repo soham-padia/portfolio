@@ -25,7 +25,7 @@ const Map = () => {
         dx={-25}
         dy={50}
         connectorProps={{
-            stroke:"#da4ea2",
+            stroke:"#25b15d",
             strokeWidth:4,
             strokeLinecap:"round"
 

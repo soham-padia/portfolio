@@ -4,8 +4,8 @@ import { motion } from "framer-motion";
 
 export const Navbar = () => {
   return (
-    <div className="flex justify-center sm:w-full">
-      <div className="w-screen flex justify-between items-center md:px-10 px-5 lg:px-20">
+    <div className="flex justify-center sm:w-full bg-gif ">
+      <div className="w-screen flex justify-between items-center md:px-10 px-5 lg:px-20 backdrop-blur-2xl">
         <div className="flex items-center gap-12">
           <img
             src="img/transparent_logo.png"
