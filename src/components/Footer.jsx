@@ -3,8 +3,8 @@ import { GrLinkedinOption, GrGithub, GrInstagram } from "react-icons/gr";
 
 export const Footer = () => {
   return (
-    <div className="flex justify-center bg-transparent py-10">
-      <div className="w-screen flex flex-col items-center md:px-10 px-5 lg:px-20 backdrop-blur-2xl">
+    <div className="flex justify-center bg-footer py-8">
+      <div className="w-screen flex flex-col items-center md:px-10 px-5 lg:px-20 backdrop-blur-3xl">
         <p className="font-playfair text-lg text-gray-800">
           <span className="text-2xl">©</span> 
           <span className="font-bold">2024 Soham Padia</span> 

@@ -1,5 +1,4 @@
 import React from "react";
-
 import { motion } from "framer-motion";
 import { ProjectSection } from "./ProjectSection";
 
@@ -7,66 +6,65 @@ export const Projects = () => {
   
   const projectInfo = [
     {
+      title: "Enhancing Public Speaking Skills through AI-Powered Analysis and Feedback",
+      description:
+        "This research paper presents an AI-driven application designed to enhance public speaking skills through personalized feedback on voice modulation, facial expressions, and speech content. The system integrates technologies like SpaCy, NLTK, OpenCV, YOLO, OpenAI-Whisper, and SpeechRecognition.",
+      image: "img/research1.gif",  // Replace with an appropriate image
+      bgColor: "#dedede",  // Dark background
+      textColor: "#2a2a2a",  // Off-white text color
+      gitLink: "/path-to-research-paper-1.pdf"  // Link to the PDF
+    },
+    {
+      title: "Chi Square for Goodness of Fit and Test for Independence Using NLP",
+      description:
+        "This paper explores the application of NLP techniques to improve the chi-square test for goodness of fit and independence, enhancing accuracy and efficiency in statistical analysis.",
+      image: "img/research2.gif",  // Replace with an appropriate image
+      bgColor: "#2a2a2a",  // Muted blue/gray background
+      textColor: "#dedede",  // Off-white text color
+      gitLink: "/path-to-research-paper-2.pdf"  // Link to the PDF
+    },
+    {
       title: "My Portfolio Project",
       description:
-        "Through building this project with React, I gained a wealth of knowledge about Tailwind, JavaScript, and Framer Motion, among other things. It was a highly enjoyable experience, and I'm proud to say that it even served as a foundation for developing my own portfolio website.",
-      image: "img/sale.gif",
-      bgColor: "#111111",
-      textColor: "#ffffff",
+        "Through building this project with React, I gained a wealth of knowledge about Tailwind, JavaScript, and Framer Motion. It even served as a foundation for developing my portfolio website.",
+      image: "img/sal.gif",
+      bgColor: "#dedede",  // Dark background
+      textColor: "#2a2a2a",  // Off-white text color
       gitLink: "https://github.com/soham-padia/portfolio"
     },
     {
       title: "A bookings website",
       description:
-        "By undertaking the development of this project using GoLang, I acquired extensive knowledge about various technologies such as Go, Html, css, and Postgresql. The process of building this project was extremely gratifying, and I am pleased to mention that it even laid the groundwork for creating a hotels booking website.",
-      image: "img/p2.gif",
-      bgColor: "#fe9c35",
-      textColor: "#000000",
+        "Developed with GoLang, this project taught me a lot about Go, Html, CSS, and Postgresql, and laid the groundwork for a hotel booking website.",
+      image: "img/p.gif",
+      bgColor: "#2a2a2a",  // Muted blue/gray background
+      textColor: "#dedede",  // Off-white text color
       gitLink: "https://github.com/soham-padia/bookings"
     },
     {
       title: "An Angular website with Supabase as Backend",
       description:
-        "I invested a lot of effort in creating this web app using Angular, Tailwind, Supabase, and TypeScript. It helped me understand Angular and improve my coding skills. Overall, it was a valuable learning experience for me.",
-      image: "img/p3.gif",
-      bgColor: "#0097b2",
-      textColor: "#000000",
+        "Built with Angular, Tailwind, Supabase, and TypeScript, this project helped me improve my Angular and coding skills.",
+      image: "img/p.gif",
+      bgColor: "#dedede",  // Dark background
+      textColor: "#2a2a2a", // Off-white text color
       gitLink: "https://github.com/soham-padia/neoe"
     },
-  ];
+  ]
 
   return (
-    <motion.div
-      id="project"
-      className="md:h-screen h-fit font-mono backdrop-blur-none md:shadow-inner md:rounded-lg flex flex-col py-20 snap-center md:justify-center"
-    >
-      <motion.p initial={{opacity:0}} whileInView={{opacity:1}} transition={{delay:0.25}} className=" self-center  md:basis-1/12 justify-self-center md:p-4 text-6xl">
-        Notable Projects --{">"}
-      </motion.p>
-      <motion.div initial={{opacity:0}} whileInView={{opacity:1}} transition={{delay:0.25}} className=" md:basis-10/12">
-        <div className="flex flex-row snap-x snap-mandatory scroll-smooth overflow-x-auto scrollbar-hide md:h-full md:p-5 flex-nowrap items-center">
-          {projectInfo.map((project, index) => (
-            <motion.div
-              className={` bg-white text-black bg-cover snap-center md:m-3 w-full h-full shadow-md rounded-none flex-shrink-0`}
-            >
-              <ProjectSection image={project.image} title={project.title} description={project.description} gitLink={project.gitLink}></ProjectSection>
-            </motion.div>
-          ))}
-        </div>
-      </motion.div>
-      <motion.button
-        whileHover={{ scale: 1.05 }}
-        whileTap={{ scale: 0.95 }}
-        className="md:basis-1/12 bg-[#CCCCCC] w-fit self-end rounded-lg p-4 px-20 mx-4"
-        initial={{opacity:0}} whileInView={{opacity:1}} transition={{delay:0.25}}
-        onClick={() => {
-          document
-            .getElementById("contact")
-            .scrollIntoView({ behavior: "smooth" });
-        }}
-      >
-        See more
-      </motion.button>
-    </motion.div>
+    <div id="project" className="flex flex-col gap-10 p-10 py-10">
+      {projectInfo.map((project, index) => (
+        <ProjectSection 
+          key={index}
+          title={project.title} 
+          description={project.description} 
+          image={project.image} 
+          bgColor={project.bgColor}
+          textColor={project.textColor}
+          gitLink={project.gitLink}
+        />
+      ))}
+    </div>
   );
 };

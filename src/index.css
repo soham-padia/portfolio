@@ -11,6 +11,15 @@
   /* filter: blur(8px); Adjust as needed */
 }
 
+.bg-footer {
+    background-image: url('img/footer.gif'); /* replace with your GIF URL */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: Adjust;
+    /* filter: blur(8px); Adjust as needed */
+  }
+
 
 .source-code-pro {
   font-family: "Source Code Pro", monospace;
@@ -34,13 +43,13 @@ body {
   
 .dm-mono-regular {
     font-family: "DM Mono", monospace;
-    font-weight: 400;
+    font-weight: 500;
     font-style: normal;
 }
   
 .dm-mono-medium {
     font-family: "DM Mono", monospace;
-    font-weight: 700;
+    font-weight: 1000;
     font-style: normal;
 }
   
@@ -60,5 +69,24 @@ body {
     font-family: "DM Mono", monospace;
     font-weight: 500;
     font-style: italic;
+}
+  
+
+/* You can adjust these values to your preference */
+.transition-all {
+    transition: all 0.3s ease-in-out;
+}
+
+
+/* Add specific styling for your font */
+
+
+.custom-font {
+    font-family: "Tilt Prism", monospace;
+    font-weight: 800;
+    font-style: normal;
+    font-variation-settings:
+      "XROT" 0,
+      "YROT" 0;
 }
   
