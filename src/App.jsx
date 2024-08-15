@@ -18,7 +18,7 @@ function App() {
         <div className="md:h-screen h-fit snap-center shrink-0">
           <Skills />
         </div>
-        <div className="md:h-screen h-fit snap-center shrink-0">
+        <div className=" h-fit snap-center shrink-0">
           <Projects />
         </div>
         <div className="snap-center shrink-0">
