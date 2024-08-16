@@ -4,7 +4,7 @@ import { motion } from 'framer-motion'
 export const Skills = () => {
   return (
     <motion.div id='skill' className=' md:h-screen shadow-inner rounded-lg flex snap-center justify-center'>
-      <div className='md:h-9/10 snap-center md:rounded-lg md:backdrop-blur-sm md:shadow-[0_0_10px_-1px_rgba(0,0,0,0.1)] md:shadow-gray-800 m-4 md:m-10  flex flex-col md:flex-row w-screen md:px-20 p-2 justify-between'>
+      <div className='md:h-9/10 snap-center md:rounded-lg md:backdrop-blur-sm md:shadow-[0_0_10px_-1px_rgba(0,0,0,0.1)] md:shadow-md m-4 md:m-10  flex flex-col md:flex-row w-screen md:px-20 p-2 justify-between'>
         <div className='basis-1/2 md:p-48 pb-4 object-scale-down'>
           <motion.img drag mouse dragConstraints={{top:-50,left:-50,right:50,bottom:50}} initial={{opacity:0}} whileInView={{opacity:1}} transition={{delay:0.25}} src='img/oooo.png'></motion.img>
         </div>

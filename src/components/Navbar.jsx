@@ -26,10 +26,10 @@ export const Navbar = () => {
   return (
     <div
       className={`fixed w-screen z-50 transition-all duration-300 ease-in-out ${
-        isScrolled ? "bg-transparent py-2 dm-mono-medium" : "bg-gif py-1 dm-mono-regular"
+        isScrolled ? "bg-transparent py-2 dm-mono-medium" : "bg-footer py-4 dm-mono-regular"
       }`}
     >
-      <div className={`flex justify-center sm:w-full ${isScrolled? "backdrop-blur-none":"backdrop-blur-lg"}`}>
+      <div className={`flex justify-center sm:w-full ${isScrolled? "backdrop-blur-none":"backdrop-blur-2xl drop-shadow-2xl"}`}>
         <div className="flex justify-between items-center w-full md:px-10 px-5 lg:px-20">
           <div className="flex items-center gap-12">
             <img
