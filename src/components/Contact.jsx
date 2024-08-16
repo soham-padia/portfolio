@@ -1,59 +1,46 @@
-import emailjs from "@emailjs/browser";
-import React,{useRef, useState} from "react";
-import Map from "./Map";
+import React from "react";
 import { motion } from "framer-motion";
 import { Footer } from "./Footer";
+import StatsComponent from "./StatsComponent";
 
 export const Contact = () => {
 
-  const ref=useRef()
-
-  const [success,setSuccess]=useState(null)
-  const [loading,setLoading]=useState(false)
-
-  const handleSubmit = e =>{
-    e.preventDefault()
-    setLoading(true)
-    emailjs.sendForm(import.meta.env.VITE_SERVICE_ID,import.meta.env.VITE_TEMPLATE_ID,ref.current, import.meta.env.VITE_PUBLIC_KEY)
-    .then((result) => {
-      console.log(result.text);
-      setSuccess(true)
-    }, (error) => {
-      console.log(error.text);
-      if(error) {
-        setSuccess(false)
-      }
-    });
-  }
+  const copyToClipboard = () => {
+    navigator.clipboard.writeText("sohampadia10@gmail.com");
+    alert("Email address copied to clipboard!");
+  };
 
   return (
     <div id="contact" className="md:h-screen h-fit snap-center">
-      <div className="w-screen md:h-screen h-fit flex flex-col md:flex-row justify-between gap-20">
-        <motion.div initial={{opacity:0}} whileInView={{opacity:1}} transition={{delay:0.25}} className="basis-1/2 flex items-center justify-end">
-          <form ref={ref} onSubmit={handleSubmit} className="w-[500px] flex flex-col md:gap-6 gap-3 px-4 md:px-0">
-            <h1 className="font-mono font-light text-3xl">Contact Me</h1>
-            <input type="text" name="name" placeholder="Name" required  className="p-5 text-black font-semibold bg-gray-300 border-none rounded-md"/>
-            <input type="email" name="email" placeholder="Email" required className="p-5 text-black font-semibold bg-gray-300 border-none rounded-md"/>
-            <textarea
-              name="message"
-              placeholder="Write your message"
-              cols="30"
-              rows="10"
-              required
-              className="p-5 text-black font-semibold bg-gray-300 border-none rounded-md"
-            ></textarea>
-            <button type="submit" disabled={loading} className="bg-[#25b15d] p-5 border-none rounded-md">Send</button>
-            {success && 
-              "Your message has been sent. I'll get back to you soon :)"}
-          </form>
+      <div className="w-screen md:h-5/6 h-fit flex flex-col md:flex-row justify-between gap-20">
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ delay: 0.25 }}
+          className="basis-1/2 flex flex-col items-center justify-center"
+        >
+          <div className="w-[500px] flex flex-col items-center justify-center md:gap-6 gap-3 px-4 md:px-0 text-center">
+            <h1 className="font-mono font-light text-3xl mb-4">Contact Me</h1>
+            <a
+              href="mailto:sohampadia10@gmail.com?subject=Contact from Portfolio"
+              className="text-2xl font-semibold text-[#25b15d] hover:underline"
+            >
+              sohampadia10@gmail.com
+            </a>
+            <button
+              onClick={copyToClipboard}
+              className="mt-4 bg-[#25b15d] text-white p-2 px-4 rounded-md hover:bg-green-600 transition-all"
+            >
+              Click to Copy Email
+            </button>
+            <p className="mt-4 text-lg">Click the email above to send me a message directly, or copy the email address using the button.</p>
+          </div>
         </motion.div>
-        <motion.div initial={{opacity:0}} whileInView={{opacity:1}} transition={{delay:0.25}} className="basis-1/2">
-          <Map/>
-        </motion.div>
+        
+        <StatsComponent />
+        
       </div>
-      {/* <div className="backdrop-blur-lg absolute backdrop-filter bg-opacity-30 w-screen bg-transparent"> */}
-        <Footer></Footer>
-      {/* </div> */}
+      <Footer />
     </div>
   );
 };
