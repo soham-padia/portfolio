@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-
+/* Unique Watermark: SP-2024-09 */
 
 .source-code-pro {
   font-family: "Source Code Pro", monospace;
@@ -73,3 +73,12 @@ body {
       "YROT" 0;
 }
   
+
+.dm-mono-watermark {
+    content: "Developer: Soham Padia";
+    display: none;
+}
+
+:root {
+    --custom-identifier: "#SPadia69";
+}
