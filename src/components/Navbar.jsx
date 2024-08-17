@@ -7,7 +7,7 @@ export const Navbar = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      const scrollElement = document.querySelector('.overflow-scroll');
+      const scrollElement = document.querySelector(".overflow-scroll");
       if (scrollElement.scrollTop > 50) {
         setIsScrolled(true);
       } else {
@@ -15,7 +15,7 @@ export const Navbar = () => {
       }
     };
 
-    const scrollElement = document.querySelector('.overflow-scroll');
+    const scrollElement = document.querySelector(".overflow-scroll");
     scrollElement.addEventListener("scroll", handleScroll);
 
     return () => {
@@ -26,10 +26,24 @@ export const Navbar = () => {
   return (
     <div
       className={`fixed w-screen z-50 transition-all duration-300 ease-in-out ${
-        isScrolled ? "bg-transparent py-2 dm-mono-medium" : "bg-footer py-4 dm-mono-regular"
+        isScrolled
+          ? "bg-transparent dm-mono-medium"
+          : "py-4 dm-mono-regular"
       }`}
+      style={{
+        backgroundImage: isScrolled ? "none" : "url('/footer.gif')",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
+      }}
     >
-      <div className={`flex justify-center sm:w-full ${isScrolled? "backdrop-blur-none":"backdrop-blur-2xl drop-shadow-2xl"}`}>
+      <div
+        className={`flex justify-center sm:w-full ${
+          isScrolled
+            ? "backdrop-blur-xl py-2"
+            : "backdrop-blur-2xl drop-shadow-2xl"
+        }`}
+      >
         <div className="flex justify-between items-center w-full md:px-10 px-5 lg:px-20">
           <div className="flex items-center gap-12">
             <img

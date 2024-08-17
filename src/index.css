@@ -2,23 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-.bg-gif {
-  background-image: url('img/sale2.gif'); /* replace with your GIF URL */
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  height: Adjust;
-  /* filter: blur(8px); Adjust as needed */
-}
-
-.bg-footer {
-    background-image: url('img/footer.gif'); /* replace with your GIF URL */
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    height: Adjust;
-    /* filter: blur(8px); Adjust as needed */
-  }
 
 
 .source-code-pro {

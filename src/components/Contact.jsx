@@ -33,7 +33,7 @@ export const Contact = () => {
             >
               Click to Copy Email
             </button>
-            <p className="mt-4 text-lg">Click the email above to send me a message directly, or copy the email address using the button.</p>
+            <p className="mt-4 md:text-lg">Click the email above to send me a message directly, or copy the email address using the button.</p>
           </div>
         </motion.div>
         
