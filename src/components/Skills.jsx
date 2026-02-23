@@ -20,6 +20,13 @@ const LANGUAGES = [
 ];
 
 const TECH = [
+  "LLMs",
+  "LoRA/PEFT",
+  "RLHF",
+  "Weights & Biases",
+  "Docker/K8s",
+  "React",
+  "Next.js",
   "Firebase",
   "Supabase",
   "Git",
@@ -32,6 +39,39 @@ const TECH = [
   "Google Cloud",
   "Docker",
   "Kubernetes",
+];
+
+const METHODS = [
+  { id: "llms", label: "LLMs" },
+  { id: "slms", label: "SLMs" },
+  { id: "lora", label: "LoRA/PEFT" },
+  { id: "rlhf", label: "RLHF" },
+  { id: "metric", label: "Metric Learning" },
+];
+
+const TOOLS = [
+  { id: "pytorch", label: "PyTorch" },
+  { id: "hf", label: "HF/Transformers" },
+  { id: "tf", label: "TensorFlow" },
+  { id: "opencv", label: "OpenCV" },
+  { id: "nltk", label: "NLTK" },
+  { id: "jupyter", label: "Jupyter" },
+  { id: "wandb", label: "Weights & Biases" },
+  { id: "docker", label: "Docker/K8s" },
+  { id: "aws", label: "AWS" },
+  { id: "gcp", label: "GCP" },
+  { id: "react", label: "React" },
+  { id: "next", label: "Next.js" },
+];
+
+// Optionally tweak domain labels if you want longer text:
+const DOMAINS = [
+  { id: "nlp", label: "NLP" },
+  { id: "cv", label: "Computer Vision" },
+  { id: "rl", label: "Reinforcement Learning" },
+  { id: "speech", label: "Speech" },
+  { id: "bioai", label: "Biomedical AI" },
+  { id: "sci", label: "Scientific Computing" },
 ];
 
 const PLATFORMS = ["Linux", "Windows", "Android", "Web", "MacOS"];
@@ -52,10 +92,11 @@ export const Skills = () => {
       <div className="w-screen max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10 px-4 md:px-8">
         {/* Left: Skill web inside a glass frame */}
         <div className="flex items-center justify-center">
-          <Glass className="p-3 md:p-4">
-            <SkillWeb />
+          <Glass className="p-3 md:p-4 overflow-hidden">
+            <SkillWeb variant="compact" />
           </Glass>
         </div>
+
 
         {/* Right: Skills content */}
         <div className="flex flex-col gap-6 md:gap-8">
