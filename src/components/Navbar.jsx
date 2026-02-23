@@ -1,160 +1,171 @@
-import React, { useState, useEffect } from "react";
-import { GrLinkedinOption, GrGithub, GrInstagram } from "react-icons/gr";
+// src/components/Navbar.jsx
+import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
+import { GrLinkedinOption, GrGithub, GrInstagram } from "react-icons/gr";
+import { Glass, GlassButton, GlassPill, useTheme } from "./glass";
 
 export const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [theme, setTheme] = useTheme();
 
   useEffect(() => {
-    const handleScroll = () => {
-      const scrollElement = document.querySelector('.overflow-scroll');
-      if (scrollElement.scrollTop > 50) {
-        setIsScrolled(true);
-      } else {
-        setIsScrolled(false);
-      }
+    const scroller = document.querySelector(".overflow-scroll");
+
+    const onScroll = () => {
+      const top = scroller ? scroller.scrollTop : window.scrollY;
+      setIsScrolled(top > 50);
     };
 
-    const scrollElement = document.querySelector('.overflow-scroll');
-    scrollElement.addEventListener("scroll", handleScroll);
+    if (scroller) {
+      scroller.addEventListener("scroll", onScroll);
+    } else {
+      window.addEventListener("scroll", onScroll);
+    }
+
+    onScroll(); // set initial state
 
     return () => {
-      scrollElement.removeEventListener("scroll", handleScroll);
+      if (scroller) scroller.removeEventListener("scroll", onScroll);
+      else window.removeEventListener("scroll", onScroll);
     };
   }, []);
 
   return (
-    <div
-      className={`fixed w-screen z-50 transition-all duration-300 ease-in-out ${
-        isScrolled ? "bg-transparent py-2 dm-mono-medium" : "bg-footer py-4 dm-mono-regular"
-      }`}
-    >
-      <div className={`flex justify-center sm:w-full ${isScrolled? "backdrop-blur-none":"backdrop-blur-2xl drop-shadow-2xl"}`}>
-        <div className="flex justify-between items-center w-full md:px-10 px-5 lg:px-20">
-          <div className="flex items-center gap-12">
+    <div className="fixed top-0 z-50 w-screen">
+      {/* Liquid-glass nav container */}
+      <Glass
+        as="nav"
+        className={`mx-auto mt-3 max-w-6xl px-4 transition-all ${
+          isScrolled ? "py-2" : "py-3"
+        }`}
+      >
+        <div className="flex items-center justify-between">
+          {/* Left: logo + brand pill */}
+          <div className="flex items-center gap-3">
             <img
               src="img/transparent_logo.png"
               alt="SOHAM PADIA"
-              className={`object-cover transition-all duration-300 ${
-                isScrolled ? "h-10 w-10" : "h-14 w-14"
+              className={`object-cover transition-all ${
+                isScrolled ? "h-8 w-8" : "h-10 w-10"
               }`}
             />
-            <ul className="lg:flex hidden gap-5 list-none">
-              <motion.li
-                onClick={() =>
-                  document.getElementById("hero").scrollIntoView({
-                    behavior: "smooth",
-                  })
-                }
-                whileHover={{ scale: 1.2 }}
-                whileTap={{ scale: 0.9 }}
-                className="cursor-pointer"
-              >
-                Home
-              </motion.li>
-              <motion.li
-                onClick={() =>
-                  document.getElementById("skill").scrollIntoView({
-                    behavior: "smooth",
-                  })
-                }
-                whileHover={{ scale: 1.2 }}
-                whileTap={{ scale: 0.9 }}
-                className="cursor-pointer"
-              >
-                Skills
-              </motion.li>
-              <motion.li
-                onClick={() =>
-                  document.getElementById("project").scrollIntoView({
-                    behavior: "smooth",
-                  })
-                }
-                whileHover={{ scale: 1.2 }}
-                whileTap={{ scale: 0.9 }}
-                className="cursor-pointer"
-              >
-                Projects
-              </motion.li>
-              <motion.li
-                onClick={() =>
-                  document.getElementById("contact").scrollIntoView({
-                    behavior: "smooth",
-                  })
-                }
-                whileHover={{ scale: 1.2 }}
-                whileTap={{ scale: 0.9 }}
-                className="cursor-pointer"
-              >
-                Contact
-              </motion.li>
-            </ul>
+            <GlassPill className="hidden sm:inline-flex">Soham Padia</GlassPill>
           </div>
-          <div className="flex items-center gap-5">
-            <motion.button
+
+          {/* Center: nav links (lg+) */}
+          <ul className="hidden lg:flex items-center gap-6">
+            {[
+              { id: "hero", label: "Home" },
+              { id: "skill", label: "Skills" },
+              { id: "project", label: "Projects" },
+              { id: "contact", label: "Contact" },
+            ].map((item) => (
+              <motion.li
+                key={item.id}
+                className="cursor-pointer text-slate-900/90 dark:text-white/90"
+                whileHover={{ scale: 1.12 }}
+                whileTap={{ scale: 0.95 }}
+                onClick={() =>
+                  document.getElementById(item.id)?.scrollIntoView({
+                    behavior: "smooth",
+                  })
+                }
+              >
+                {item.label}
+              </motion.li>
+            ))}
+          </ul>
+
+          {/* Right: search + actions */}
+          <div className="flex items-center gap-2 sm:gap-3">
+            {/* Search (expands on focus) */}
+            {/* <div className="relative hidden md:block">
+              <input
+                type="search"
+                placeholder="Search…"
+                className={[
+                  "w-40 focus:w-72 transition-[width] duration-200 ease-out",
+                  "rounded-xl bg-white/10 text-white/90 placeholder:text-white/60",
+                  "ring-1 ring-white/25 focus:ring-white/40",
+                  "px-3 py-1.5 outline-none",
+                ].join(" ")}
+              />
+            </div> */}
+
+            {/* Hire CTA */}
+            <GlassButton
+              variant="secondary"
               onClick={() =>
-                document.getElementById("contact").scrollIntoView({
+                document.getElementById("contact")?.scrollIntoView({
                   behavior: "smooth",
                 })
               }
-              whileHover={{ scale: 1.2 }}
-              whileTap={{ scale: 0.9 }}
-              className="w-24 p-2 bg-transparent cursor-pointer"
+              className="hidden sm:inline-flex"
             >
               Hire Now
-            </motion.button>
-            <div className="flex gap-2">
+            </GlassButton>
+
+            {/* Socials */}
+            <div className="flex items-center">
               <motion.a
-                href="https://www.linkedin.com/in/soham-padia-6865341b7/"
-                target={"_blank"}
+                href="https://www.linkedin.com/in/soham-padia/"
+                target="_blank"
+                rel="noreferrer"
+                whileHover={{ scale: 1.25 }}
+                whileTap={{ scale: 0.95 }}
+                className="p-2"
+                aria-label="LinkedIn"
+                title="LinkedIn"
               >
-                <motion.button
-                  whileHover={{ scale: 1.5 }}
-                  whileTap={{ scale: 0.9 }}
-                  className="p-2 bg-transparent cursor-pointer"
-                >
-                  <GrLinkedinOption />
-                </motion.button>
+                <GrLinkedinOption />
               </motion.a>
-              <motion.a href="https://github.com/soham-padia" target={"_blank"}>
-                <motion.button
-                  whileHover={{ scale: 1.5 }}
-                  whileTap={{ scale: 0.9 }}
-                  className="p-2 bg-transparent cursor-pointer"
-                >
-                  <GrGithub />
-                </motion.button>
+              <motion.a
+                href="https://github.com/soham-padia"
+                target="_blank"
+                rel="noreferrer"
+                whileHover={{ scale: 1.25 }}
+                whileTap={{ scale: 0.95 }}
+                className="p-2"
+                aria-label="GitHub"
+                title="GitHub"
+              >
+                <GrGithub />
               </motion.a>
               <motion.a
                 href="https://www.instagram.com/sohampadia/"
-                target={"_blank"}
-              >
-                <motion.button
-                  whileHover={{ scale: 1.5 }}
-                  whileTap={{ scale: 0.9 }}
-                  className="p-2 bg-transparent cursor-pointer"
-                >
-                  <GrInstagram />
-                </motion.button>
-              </motion.a>
-              <motion.a
-                href="Soham_Padia-Resume.pdf"
                 target="_blank"
-                className=" md:pl-5"
-                rel="noopener noreferrer"
+                rel="noreferrer"
+                whileHover={{ scale: 1.25 }}
+                whileTap={{ scale: 0.95 }}
+                className="p-2"
+                aria-label="Instagram"
+                title="Instagram"
               >
-                <motion.button
-                  whileHover={{ scale: 1.3 }}
-                  whileTap={{ scale: 0.9 }}
-                  className="p-2 bg-transparent cursor-pointer"
-                >
-                  My Resume
-                </motion.button>
+                <GrInstagram />
               </motion.a>
             </div>
+
+            {/* Resume */}
+            <a
+              href="Soham_Padia-Resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hidden md:inline-block"
+              title="Resume"
+            >
+              <GlassButton variant="secondary">Resume</GlassButton>
+            </a>
+
+            {/* Theme toggle */}
+            <GlassButton
+              onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+              title="Toggle theme"
+            >
+              {theme === "dark" ? "☀️" : "🌙"}
+            </GlassButton>
           </div>
         </div>
-      </div>
+      </Glass>
     </div>
   );
 };

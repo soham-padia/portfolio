@@ -1,25 +1,23 @@
+/* index.css */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+/* ---------- Helpers you already had (cleaned) ---------- */
+
 .bg-gif {
-  background-image: url('img/sale2.gif'); /* replace with your GIF URL */
+  background-image: url('img/sale2.gif');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  height: Adjust;
-  /* filter: blur(8px); Adjust as needed */
 }
 
 .bg-footer {
-    background-image: url('img/footer.gif'); /* replace with your GIF URL */
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    height: Adjust;
-    /* filter: blur(8px); Adjust as needed */
-  }
-
+  background-image: url('img/footer.gif');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
 
 .source-code-pro {
   font-family: "Source Code Pro", monospace;
@@ -28,65 +26,73 @@
   font-style: normal;
 }
 
-body {
-    background: white;
-    background-image: radial-gradient(black 1px, transparent 0);
-    background-size: 40px 40px;
-    background-position: -19px -19px;
-}
+/* DM Mono families */
+.dm-mono-light { font-family: "DM Mono", monospace; font-weight: 300; font-style: normal; }
+.dm-mono-regular { font-family: "DM Mono", monospace; font-weight: 500; font-style: normal; }
+.dm-mono-medium { font-family: "DM Mono", monospace; font-weight: 1000; font-style: normal; }
+.dm-mono-light-italic { font-family: "DM Mono", monospace; font-weight: 300; font-style: italic; }
+.dm-mono-regular-italic { font-family: "DM Mono", monospace; font-weight: 400; font-style: italic; }
+.dm-mono-medium-italic { font-family: "DM Mono", monospace; font-weight: 500; font-style: italic; }
 
-.dm-mono-light {
-    font-family: "DM Mono", monospace;
-    font-weight: 300;
-    font-style: normal;
-}
-  
-.dm-mono-regular {
-    font-family: "DM Mono", monospace;
-    font-weight: 500;
-    font-style: normal;
-}
-  
-.dm-mono-medium {
-    font-family: "DM Mono", monospace;
-    font-weight: 1000;
-    font-style: normal;
-}
-  
-.dm-mono-light-italic {
-    font-family: "DM Mono", monospace;
-    font-weight: 300;
-    font-style: italic;
-}
-  
-.dm-mono-regular-italic {
-    font-family: "DM Mono", monospace;
-    font-weight: 400;
-    font-style: italic;
-}
-  
-.dm-mono-medium-italic {
-    font-family: "DM Mono", monospace;
-    font-weight: 500;
-    font-style: italic;
-}
-  
+/* Smooth transitions helper */
+.transition-all { transition: all 0.3s ease-in-out; }
 
-/* You can adjust these values to your preference */
-.transition-all {
-    transition: all 0.3s ease-in-out;
-}
-
-
-/* Add specific styling for your font */
-
-
+/* Tilt Prism helper */
 .custom-font {
-    font-family: "Tilt Prism", monospace;
-    font-weight: 800;
-    font-style: normal;
-    font-variation-settings:
-      "XROT" 0,
-      "YROT" 0;
+  font-family: "Tilt Prism", monospace;
+  font-weight: 800;
+  font-style: normal;
+  font-variation-settings: "XROT" 0, "YROT" 0;
 }
-  
+
+/* Optional subtle noise utility (use by adding class="noise") */
+.noise::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: radial-gradient(rgba(255,255,255,.08) 1px, transparent 1px);
+  background-size: 2px 2px;
+  opacity: .2;
+}
+
+/* ---------- Theme backgrounds: DOT GRID in both modes ---------- */
+:root { color-scheme: light dark; }
+html, body, #root { height: 100%; }
+body { @apply antialiased; }
+
+:root {
+  --dot-size: 2px;
+  --dot-gap: 40px;
+  --dot-offset: -19px;
+  --dot-light: rgba(0,0,0,0.18);      /* black-ish dots for light */
+  --dot-dark:  rgba(255,255,255,0.10);/* soft white dots for dark */
+}
+
+/* Light mode */
+body:not(.dark) {
+  background:
+    radial-gradient(var(--dot-light) var(--dot-size), transparent 0),
+    linear-gradient(180deg, #ffffff 0%, #f6f7fb 100%);
+  background-size: var(--dot-gap) var(--dot-gap), auto;
+  background-position: var(--dot-offset) var(--dot-offset), center;
+}
+
+/* Dark mode (dots + bokeh scene) */
+.dark body {
+  background:
+    radial-gradient(var(--dot-dark) var(--dot-size), transparent 0),
+    radial-gradient(1200px 600px at 10% -10%, #84b6ff 0%, transparent 60%),
+    radial-gradient(1000px 500px at 90% 10%, #b794ff 0%, transparent 60%),
+    linear-gradient(180deg, #05060a 0%, #0b0e17 100%);
+  background-size: var(--dot-gap) var(--dot-gap), auto, auto, auto;
+  background-position:
+    var(--dot-offset) var(--dot-offset),
+    center, center, center;
+}
+
+/* Slightly soften dots on tiny screens */
+@media (max-width: 480px) {
+  :root { --dot-light: rgba(0,0,0,0.14); }
+  .dark body { --dot-dark: rgba(255,255,255,0.08); }
+}

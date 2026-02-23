@@ -1,33 +1,118 @@
-import React from 'react'
-import { motion } from 'framer-motion'
+// src/components/Skills.jsx
+import React from "react";
+import { motion } from "framer-motion";
+import { Glass, GlassPill, GlassButton } from "./glass";
+import SkillWeb from "./SkillWeb";
+
+const LANGUAGES = [
+  "C",
+  "C++",
+  "Bash/Shell",
+  "Rust",
+  "Java",
+  "SQL",
+  "Dart",
+  "TypeScript",
+  "JavaScript",
+  "Go",
+  "HTML",
+  "CSS (Tailwind, Bootstrap)",
+];
+
+const TECH = [
+  "Firebase",
+  "Supabase",
+  "Git",
+  "Flutter",
+  "React",
+  "Angular",
+  "Django",
+  "Blender",
+  "Microservices",
+  "Google Cloud",
+  "Docker",
+  "Kubernetes",
+];
+
+const PLATFORMS = ["Linux", "Windows", "Android", "Web", "MacOS"];
 
 export const Skills = () => {
+  const scrollToProjects = () =>
+    document.getElementById("project")?.scrollIntoView({ behavior: "smooth" });
+
   return (
-    <motion.div id='skill' className=' md:h-screen shadow-inner rounded-lg flex snap-center justify-center'>
-      <div className='md:h-9/10 snap-center md:rounded-lg md:backdrop-blur-sm md:shadow-[0_0_10px_-1px_rgba(0,0,0,0.1)] md:shadow-md m-4 md:m-10  flex flex-col md:flex-row w-screen md:px-20 p-2 justify-between'>
-        <div className='basis-1/2 md:p-48 pb-4 object-scale-down'>
-          <motion.img drag mouse dragConstraints={{top:-50,left:-50,right:50,bottom:50}} initial={{opacity:0}} whileInView={{opacity:1}} transition={{delay:0.25}} src='img/oooo.png'></motion.img>
+    <motion.section
+      id="skill"
+      className="md:h-screen flex snap-center justify-center items-center"
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      viewport={{ once: true, margin: "-80px" }}
+      transition={{ duration: 0.25 }}
+    >
+      <div className="w-screen max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10 px-4 md:px-8">
+        {/* Left: Skill web inside a glass frame */}
+        <div className="flex items-center justify-center">
+          <Glass className="p-3 md:p-4">
+            <SkillWeb />
+          </Glass>
         </div>
-        <div className='basis-1/2 flex flex-col justify-center items-center gap-5'>
-          <motion.div initial={{opacity:0}} whileInView={{opacity:1}} transition={{delay:0.25}}>
-            <h1 className='font-mono text-5xl'>SKILLS</h1>
-            <br />
-            <p className='text-[#25b15d]'>Languages</p>
-            <h2 className='text-2xl'> C, Cpp, Bash/Shell, Rust, Java, SQL, Dart, Typescript, Javascript, Go, HTML, css (tailwind and bootstrap included).</h2>
-            <br />
-            <br />
-            <p className='text-[#25b15d]'>Technologies/Frameworks </p>
-            <h2 className='text-2xl'> Firebase, Supabase, Git, Flutter, React, Angular, Blender, Microservies, Google Cloud, and more.</h2>
-            <br />
-            <br />
-            <p className='text-[#25b15d]'>Platforms </p>
-            <h2 className='text-2xl'> Linux, Windows, Android, and Web</h2>
-            <br />
-            <br />
-            <motion.button whileHover={{scale:1.2}} whileTap={{scale:0.9}} onClick={()=>{document.getElementById('project').scrollIntoView({behavior:'smooth'})}} className='bg-[#CACACACA] rounded-md hover:bg-[#CACACA] p-3'>See More</motion.button>
-          </motion.div>
+
+        {/* Right: Skills content */}
+        <div className="flex flex-col gap-6 md:gap-8">
+          <div>
+            <h1 className="font-mono text-4xl md:text-5xl tracking-tight">
+              SKILLS
+            </h1>
+            <p className="mt-1 text-[#25b15d]">What I work with</p>
+          </div>
+
+          {/* Languages */}
+          <Glass className="p-5">
+            <h3 className="text-lg font-semibold text-slate-900 dark:text-white">
+              Languages
+            </h3>
+            <div className="mt-3 flex flex-wrap gap-2">
+              {LANGUAGES.map((item) => (
+                <GlassPill key={item}>{item}</GlassPill>
+              ))}
+            </div>
+          </Glass>
+
+          {/* Technologies / Frameworks */}
+          <Glass className="p-5">
+            <h3 className="text-lg font-semibold text-slate-900 dark:text-white">
+              Technologies / Frameworks
+            </h3>
+            <div className="mt-3 flex flex-wrap gap-2">
+              {TECH.map((item) => (
+                <GlassPill key={item}>{item}</GlassPill>
+              ))}
+            </div>
+          </Glass>
+
+          {/* Platforms + CTA */}
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
+            <Glass className="p-5 sm:col-span-2">
+              <h3 className="text-lg font-semibold text-slate-900 dark:text-white">
+                Platforms
+              </h3>
+              <div className="mt-3 flex flex-wrap gap-2">
+                {PLATFORMS.map((item) => (
+                  <GlassPill key={item}>{item}</GlassPill>
+                ))}
+              </div>
+            </Glass>
+
+            <Glass className="p-5 flex items-center justify-center">
+              <GlassButton onClick={scrollToProjects} className="w-full">
+                See Projects
+              </GlassButton>
+            </Glass>
+          </div>
         </div>
       </div>
-    </motion.div>
-  )
-}
+    </motion.section>
+  );
+};
+
+export default Skills;

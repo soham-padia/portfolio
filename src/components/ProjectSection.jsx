@@ -1,134 +1,109 @@
-import React, { useEffect, useState } from "react";
+// src/components/ProjectSection.jsx
+import React from "react";
 import { motion } from "framer-motion";
+import { Glass, GlassButton, GlassPill } from "./glass";
 
+/**
+ * Apple-style glass project card
+ * - Mobile-first single card; responsive without JS resize listeners
+ * - Accepts legacy props (bgColor, textColor) for accent compatibility
+ * - Optional: tags[], gitLink, liveLink
+ */
 export const ProjectSection = (props) => {
-  const [isMobile, setIsMobile] = useState(window.innerWidth < 786);
+  const {
+    title = "Untitled Project",
+    description = "No description provided.",
+    image,
+    gitLink,
+    liveLink,
+    tags = [],
+    // legacy accent props (optional)
+    bgColor,
+    textColor,
+  } = props;
 
-  // Setup event listener for window resize
-  useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth < 786);
-    };
+  const accent = textColor || "#25b15d";
 
-    window.addEventListener('resize', handleResize);
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 8 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-60px" }}
+      transition={{ duration: 0.2 }}
+    >
+      <Glass className="group h-full p-4 sm:p-5 flex flex-col">
+        {/* Image header */}
+        {image ? (
+          <div className="relative overflow-hidden rounded-xl mb-4">
+            <img
+              src={image}
+              alt={title}
+              loading="lazy"
+              className="w-full h-44 md:h-56 object-cover transition-transform duration-300 group-hover:scale-[1.03]"
+            />
+            {/* subtle top glow */}
+            <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+          </div>
+        ) : (
+          <div className="h-44 md:h-56 rounded-xl bg-white/5 ring-1 ring-white/10 mb-4" />
+        )}
 
-    // Cleanup the event listener on component unmount
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
-  }, []);
-
-  if (isMobile) {
-    return (
-      <div
-        className="relative w-full min-h-[24rem] md:min-h-[40rem] flex items-center p-4 md:p-8"
-        style={{
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          backgroundColor: props.bgColor, // Dynamic background color
-        }}
-      >
-        <div
-          className="w-full h-full absolute top-0 left-0 bg-cover bg-center"
-          style={{ backgroundImage: `url('${props.image}')` }}
-        />
-        {/* Content overlay */}
-        <motion.div
-          className="z-10 w-full md:w-3/4 lg:w-1/2 p-5 md:p-10 text-center"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ delay: 0.2 }}
-          style={{ backgroundColor: props.bgColor }}
+        {/* Title + tags */}
+        <h3
+          className="text-lg font-semibold text-slate-900 dark:text-white"
+          style={textColor ? { color: textColor } : undefined}
         >
-          <h1
-            className="text-3xl md:text-5xl font-bold mb-4"
-            style={{ color: props.textColor }}
-          >
-            {props.title}
-          </h1>
-          <p
-            className="text-base md:text-xl font-semibold mb-8"
-            style={{ color: props.textColor }}
-          >
-            {props.description}
-          </p>
-          <motion.a
-            href={props.gitLink}
-            target="_blank"
-            className="text-base md:text-lg border-2 px-4 md:px-6 py-2 inline-block"
-            style={{
-              color: props.textColor,
-              borderColor: props.textColor,
-              backgroundColor: props.bgColor,
-            }}
-            whileHover={{
-              backgroundColor: props.textColor,
-              color: props.bgColor,
-            }}
-          >
-            View Project
-          </motion.a>
-        </motion.div>
-      </div>
-    );
-  } else {
-    return (
-      <div
-        className="p-8"
-        style={{
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          backgroundColor: props.bgColor, // Dynamic background color
-        }}
-      >
-        <div
-          className="w-full min-h-[40rem] h-auto flex items-center relative"
-          style={{
-            backgroundImage: `url('${props.image}')`,
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-            backgroundColor: props.bgColor, // Dynamic background color
-          }}
-        >
-          {/* Content overlay */}
-          <motion.div
-            className="absolute z-10 w-full md:w-3/4 lg:w-1/2 p-10"
-            style={{ background: props.bgColor }}
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ delay: 0.2 }}
-          >
-            <h1
-              className="text-5xl font-bold mb-4"
-              style={{ color: props.textColor }}
-            >
-              {props.title}
-            </h1>
-            <p
-              className="text-xl font-bold mb-8"
-              style={{ color: props.textColor }}
-            >
-              {props.description}
-            </p>
-            <motion.a
-              href={props.gitLink}
-              target="_blank"
-              className="text-lg border-2 px-6 py-2 inline-block"
-              style={{
-                color: props.textColor,
-                borderColor: props.textColor,
-                background: props.bgColor,
-              }}
-              whileHover={{
-                backgroundColor: props.textColor,
-                color: props.bgColor,
-              }}
-            >
-              View Project
-            </motion.a>
-          </motion.div>
+          {title}
+        </h3>
+
+        {Array.isArray(tags) && tags.length > 0 && (
+          <div className="mt-2 mb-1 flex flex-wrap gap-2">
+            {tags.slice(0, 4).map((t, i) => (
+              <GlassPill key={i}>{t}</GlassPill>
+            ))}
+          </div>
+        )}
+
+        {/* Description */}
+        <p className="mt-2 text-sm leading-relaxed text-slate-700 dark:text-white/80">
+          {description}
+        </p>
+
+        {/* Spacer */}
+        <div className="flex-1" />
+
+        {/* Actions */}
+        <div className="mt-4 flex items-center gap-2">
+          {gitLink && (
+            <a href={gitLink} target="_blank" rel="noopener noreferrer">
+              <GlassButton>GitHub</GlassButton>
+            </a>
+          )}
+          {liveLink && (
+            <a href={liveLink} target="_blank" rel="noopener noreferrer">
+              <GlassButton variant="secondary">Live</GlassButton>
+            </a>
+          )}
         </div>
-      </div>
-    );
-  }
+
+        {/* Optional accent bar using legacy bgColor */}
+        {bgColor && (
+          <div
+            className="mt-4 h-1 w-full rounded-full opacity-60"
+            style={{ background: bgColor }}
+          />
+        )}
+
+        {/* Optional accent border using legacy textColor */}
+        {textColor && (
+          <div
+            className="pointer-events-none absolute inset-0 rounded-2xl"
+            style={{ boxShadow: `inset 0 0 0 1px ${accent}20` }}
+          />
+        )}
+      </Glass>
+    </motion.div>
+  );
 };
+
+export default ProjectSection;
