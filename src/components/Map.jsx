@@ -81,8 +81,8 @@ const Map = ({
         {/* Boston marker/label */}
         <Annotation
           subject={BOSTON}
-          dx={-70}
-          dy={-100}
+          dx={-48}
+          dy={-58}
           connectorProps={{
             stroke: "#25b15d",
             strokeWidth: 3,
@@ -93,7 +93,7 @@ const Map = ({
             x="-8"
             y="4"
             className="font-semibold"
-            fontSize={50}
+            fontSize={26}
             textAnchor="end"
             alignmentBaseline="middle"
             fill="#25b15d"

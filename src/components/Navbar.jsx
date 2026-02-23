@@ -102,7 +102,7 @@ export const Navbar = () => {
                 rel="noreferrer"
                 whileHover={{ scale: 1.25 }}
                 whileTap={{ scale: 0.95 }}
-                className="p-2"
+                className="p-1.5 sm:p-2"
                 aria-label="LinkedIn"
                 title="LinkedIn"
               >
@@ -114,7 +114,7 @@ export const Navbar = () => {
                 rel="noreferrer"
                 whileHover={{ scale: 1.25 }}
                 whileTap={{ scale: 0.95 }}
-                className="p-2"
+                className="p-1.5 sm:p-2"
                 aria-label="GitHub"
                 title="GitHub"
               >
@@ -126,7 +126,7 @@ export const Navbar = () => {
                 rel="noreferrer"
                 whileHover={{ scale: 1.25 }}
                 whileTap={{ scale: 0.95 }}
-                className="p-2"
+                className="hidden sm:inline-flex p-2"
                 aria-label="Instagram"
                 title="Instagram"
               >

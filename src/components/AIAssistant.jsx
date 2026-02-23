@@ -175,115 +175,116 @@ export const AIAssistant = () => {
 
   return (
     <>
-      <div className="fixed bottom-5 right-5 z-[70]">
-        <GlassButton onClick={() => setOpen(true)} className="shadow-lg">
-          AI Twin
+      <div className="fixed bottom-5 right-5 z-[85]">
+        <GlassButton onClick={() => setOpen((prev) => !prev)} className="shadow-lg">
+          {open ? "Close AI Twin" : "AI Twin"}
         </GlassButton>
       </div>
 
-      {open && (
-        <div
-          className="fixed inset-0 z-[80] bg-black/50 backdrop-blur-sm p-4 md:p-8"
-          onClick={() => setOpen(false)}
-        >
-          <div className="mx-auto mt-8 md:mt-14 max-w-3xl" onClick={(e) => e.stopPropagation()}>
-            <Glass className="p-4 md:p-6">
-              <div className="flex items-center justify-between gap-3">
-                <div>
-                  <h3 className="font-display text-3xl font-semibold">Soham AI Twin</h3>
-                  <p className="text-sm opacity-75">Chat or run role-fit analysis.</p>
-                </div>
-                <GlassButton variant="secondary" onClick={() => setOpen(false)}>
-                  Close
-                </GlassButton>
-              </div>
-
-              <div className="mt-4 flex items-center gap-2">
-                <GlassButton
-                  onClick={() => setMode("chat")}
-                  variant={mode === "chat" ? "primary" : "secondary"}
-                >
-                  Chat
-                </GlassButton>
-                <GlassButton
-                  onClick={() => setMode("job_fit")}
-                  variant={mode === "job_fit" ? "primary" : "secondary"}
-                >
-                  Job Fit
-                </GlassButton>
-              </div>
-
-              {mode === "chat" ? (
-                <div className="mt-4">
-                  <div className="h-[320px] overflow-y-auto rounded-xl bg-black/5 p-3 ring-1 ring-black/10 dark:bg-white/5 dark:ring-white/15">
-                    <div className="space-y-3">
-                      {messages.map((m, idx) => (
-                        <div
-                          key={`${m.role}-${idx}`}
-                          className={`max-w-[92%] rounded-xl px-3 py-2 text-sm whitespace-pre-wrap ${
-                            m.role === "user"
-                              ? "ml-auto bg-emerald-500/15 text-slate-900 ring-1 ring-emerald-500/30 dark:text-white"
-                              : "mr-auto bg-black/5 text-slate-800 ring-1 ring-black/10 dark:bg-white/8 dark:text-white/90 dark:ring-white/20"
-                          }`}
-                        >
-                          {m.text}
-                        </div>
-                      ))}
-                      <div ref={chatEndRef} />
-                    </div>
-                  </div>
-
-                  {chatError && (
-                    <p className="mt-2 text-sm text-red-500 dark:text-red-300">{chatError}</p>
-                  )}
-
-                  <div className="mt-3 flex gap-2">
-                    <input
-                      type="text"
-                      value={chatInput}
-                      onChange={(e) => setChatInput(e.target.value)}
-                      onKeyDown={(e) => {
-                        if (e.key === "Enter") onSendChat();
-                      }}
-                      placeholder="Ask about projects, research, skills, internships..."
-                      className="w-full rounded-xl bg-black/5 px-3 py-2 text-sm outline-none ring-1 ring-black/10 placeholder:text-slate-500 focus:ring-emerald-400/40 dark:bg-white/10 dark:ring-white/20 dark:placeholder:text-white/45"
-                    />
-                    <GlassButton onClick={onSendChat} disabled={chatLoading}>
-                      {chatLoading ? "Sending..." : "Send"}
-                    </GlassButton>
-                  </div>
-                </div>
-              ) : (
-                <div className="mt-4">
-                  <p className="text-sm opacity-80">
-                    Paste a job description to get role-fit feedback based on Soham&apos;s profile.
-                  </p>
-                  <textarea
-                    value={jobText}
-                    onChange={(e) => setJobText(e.target.value)}
-                    placeholder="Paste job description here..."
-                    className="mt-2 h-44 w-full resize-y rounded-xl bg-black/5 px-3 py-2 text-sm outline-none ring-1 ring-black/10 placeholder:text-slate-500 focus:ring-emerald-400/40 dark:bg-white/10 dark:ring-white/20 dark:placeholder:text-white/45"
-                  />
-                  <div className="mt-3 flex items-center gap-2">
-                    <GlassButton onClick={onAnalyzeJob} disabled={jobLoading}>
-                      {jobLoading ? "Analyzing..." : "Analyze Fit"}
-                    </GlassButton>
-                    <GlassPill>Mode: job_fit</GlassPill>
-                  </div>
-                  {jobError && (
-                    <p className="mt-2 text-sm text-red-500 dark:text-red-300">{jobError}</p>
-                  )}
-                  {jobResult && (
-                    <pre className="mt-3 whitespace-pre-wrap rounded-xl bg-black/5 p-3 text-sm leading-relaxed ring-1 ring-black/10 dark:bg-white/8 dark:ring-white/20">
-                      {jobResult}
-                    </pre>
-                  )}
-                </div>
-              )}
-            </Glass>
+      <div
+        className={[
+          "fixed bottom-20 right-4 z-[84] w-[min(94vw,430px)] transition-all duration-300",
+          open ? "opacity-100 translate-y-0 pointer-events-auto" : "opacity-0 translate-y-5 pointer-events-none",
+        ].join(" ")}
+      >
+        <Glass className="p-4 md:p-5 max-h-[78vh] flex flex-col">
+          <div className="flex items-center justify-between gap-3">
+            <div>
+              <h3 className="font-display text-2xl md:text-3xl font-semibold">Soham AI Twin</h3>
+              <p className="text-sm opacity-75">Chat or run role-fit analysis.</p>
+            </div>
+            <GlassButton variant="secondary" onClick={() => setOpen(false)}>
+              Hide
+            </GlassButton>
           </div>
-        </div>
-      )}
+
+          <div className="mt-4 flex items-center gap-2">
+            <GlassButton
+              onClick={() => setMode("chat")}
+              variant={mode === "chat" ? "primary" : "secondary"}
+            >
+              Chat
+            </GlassButton>
+            <GlassButton
+              onClick={() => setMode("job_fit")}
+              variant={mode === "job_fit" ? "primary" : "secondary"}
+            >
+              Job Fit
+            </GlassButton>
+          </div>
+
+          {mode === "chat" ? (
+            <div className="mt-4 flex min-h-0 flex-1 flex-col">
+              <div className="flex-1 overflow-y-auto rounded-xl bg-black/5 p-3 ring-1 ring-black/10 dark:bg-white/5 dark:ring-white/15">
+                <div className="space-y-3">
+                  {messages.map((m, idx) => (
+                    <div
+                      key={`${m.role}-${idx}`}
+                      className={`max-w-[92%] rounded-xl px-3 py-2 text-sm whitespace-pre-wrap ${
+                        m.role === "user"
+                          ? "ml-auto bg-emerald-500/15 text-slate-900 ring-1 ring-emerald-500/30 dark:text-white"
+                          : "mr-auto bg-black/5 text-slate-800 ring-1 ring-black/10 dark:bg-white/10 dark:text-white/90 dark:ring-white/20"
+                      }`}
+                    >
+                      {m.text}
+                    </div>
+                  ))}
+                  <div ref={chatEndRef} />
+                </div>
+              </div>
+
+              {chatError && (
+                <p className="mt-2 text-sm text-red-500 dark:text-red-300">{chatError}</p>
+              )}
+
+              <div className="mt-3 flex flex-col sm:flex-row gap-2">
+                <input
+                  type="text"
+                  value={chatInput}
+                  onChange={(e) => setChatInput(e.target.value)}
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter") onSendChat();
+                  }}
+                  placeholder="Ask about projects, research, skills, internships..."
+                  className="w-full rounded-xl bg-black/5 px-3 py-2 text-sm outline-none ring-1 ring-black/10 placeholder:text-slate-500 focus:ring-emerald-400/40 dark:bg-white/10 dark:ring-white/20 dark:placeholder:text-white/45"
+                />
+                <GlassButton onClick={onSendChat} disabled={chatLoading} className="sm:min-w-[84px]">
+                  {chatLoading ? "Sending..." : "Send"}
+                </GlassButton>
+              </div>
+            </div>
+          ) : (
+            <div className="mt-4 min-h-0 flex-1 flex flex-col">
+              <p className="text-sm opacity-80">
+                Paste a job description to get role-fit feedback based on Soham&apos;s profile.
+              </p>
+              <textarea
+                value={jobText}
+                onChange={(e) => setJobText(e.target.value)}
+                placeholder="Paste job description here..."
+                className="mt-2 h-40 w-full resize-y rounded-xl bg-black/5 px-3 py-2 text-sm outline-none ring-1 ring-black/10 placeholder:text-slate-500 focus:ring-emerald-400/40 dark:bg-white/10 dark:ring-white/20 dark:placeholder:text-white/45"
+              />
+              <div className="mt-3 flex flex-wrap items-center gap-2">
+                <GlassButton
+                  onClick={onAnalyzeJob}
+                  disabled={jobLoading}
+                >
+                  {jobLoading ? "Analyzing..." : "Analyze Fit"}
+                </GlassButton>
+                <GlassPill>Mode: job_fit</GlassPill>
+              </div>
+              {jobError && (
+                <p className="mt-2 text-sm text-red-500 dark:text-red-300">{jobError}</p>
+              )}
+              {jobResult && (
+                <pre className="mt-3 whitespace-pre-wrap rounded-xl bg-black/5 p-3 text-sm leading-relaxed ring-1 ring-black/10 dark:bg-white/10 dark:ring-white/20 overflow-y-auto max-h-64">
+                  {jobResult}
+                </pre>
+              )}
+            </div>
+          )}
+        </Glass>
+      </div>
     </>
   );
 };

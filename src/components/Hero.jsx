@@ -77,7 +77,7 @@ export const Hero = () => {
             Feature selection for NLP, AI speaking feedback, secure RL; stack: PyTorch, TensorFlow, React/Next.js.
           </h2>
 
-          <div className="flex gap-2">
+          <div className="flex flex-wrap gap-2">
             <GlassButton onClick={() => scrollTo("skill")}>Learn More</GlassButton>
             <GlassButton variant="secondary" onClick={() => scrollTo("project")}>
               View Projects
@@ -93,7 +93,7 @@ export const Hero = () => {
           className="flex md:p-2 flex-col justify-center items-start gap-5"
         >
           <div className="w-full text-slate-800 dark:text-white">
-            <div className="font-display text-4xl md:text-6xl flex w-fit items-baseline gap-1 leading-tight">
+            <div className="font-display text-3xl sm:text-4xl md:text-6xl flex w-fit items-baseline gap-1 leading-tight">
               <p className="whitespace-pre-wrap">Hi, I'm Soham Padia</p>
             </div>
 
@@ -140,7 +140,7 @@ export const Hero = () => {
                     animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
                     exit={{ opacity: 0, y: -16, filter: "blur(6px)" }}
                     transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
-                    className="font-display whitespace-nowrap text-4xl md:text-6xl lg:text-7xl tracking-tight leading-none"
+                    className="font-display whitespace-normal sm:whitespace-nowrap text-3xl sm:text-4xl md:text-6xl lg:text-7xl tracking-tight leading-none"
                   >
                     {ROLE_SLIDES[activeSlide].title}
                   </motion.h1>
