@@ -1,34 +1,81 @@
 // src/components/Hero.jsx
-import React from "react";
-import Typewriter from "typewriter-effect";
-import { motion } from "framer-motion";
-import { AvatarGlass, Glass, GlassButton, GlassPill } from "./glass";
+import React, { useEffect, useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
+import { Glass, GlassButton } from "./glass";
+
+const ROTATION_MS = 2800;
+const ROLE_SLIDES = [
+  {
+    title: "ML ENGINEER",
+    proof: "Built and shipped a real-time inference API with 6 endpoints and p95/p99 tracking.",
+  },
+  {
+    title: "AI ENGINEER",
+    proof: "Published 3 peer-reviewed AI papers across NLP, multimodal feedback, and multi-agent learning.",
+  },
+  {
+    title: "LLM ENGINEER",
+    proof: "Designed retrieval-grounded prompting pipelines to improve answer reliability and reduce hallucinations.",
+  },
+  {
+    title: "RAG ENGINEER",
+    proof: "Built a FAISS-backed RAG assistant over 500+ pages with iterative chunking and embedding evaluation.",
+  },
+  {
+    title: "MLOPS ENGINEER",
+    proof: "Containerized services with health checks, CI/CD, and observability for latency and error-rate regressions.",
+  },
+  {
+    title: "AI SYSTEMS ENGINEER",
+    proof: "Ran 16-node adversarial simulations with reproducible experiments and F1 scores up to 1.00.",
+  },
+];
 
 export const Hero = () => {
+  const [activeSlide, setActiveSlide] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
+
+  useEffect(() => {
+    if (isPaused) return undefined;
+
+    const id = setInterval(() => {
+      setActiveSlide((prev) => (prev + 1) % ROLE_SLIDES.length);
+    }, ROTATION_MS);
+    return () => clearInterval(id);
+  }, [isPaused]);
+
   const scrollTo = (id) =>
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
 
   return (
-    <section
-      id="hero"
-      className="md:h-screen flex snap-center items-center justify-between flex-col relative"
-    >
-      <div className="md:h-screen snap-center flex flex-col md:flex-row w-screen md:px-20 px-10 p-2 justify-between">
-        {/* Left column: intro */}
+    <section id="hero" className="section-wrap min-h-[calc(100vh-6rem)] flex items-center">
+      <div className="section-inner grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 items-center">
         <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ delay: 0.15 }}
-          className="md:basis-2/5 basis-1/2 flex flex-col justify-center gap-5"
+          initial={{ opacity: 0, y: 10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.35, delay: 0.05 }}
+          className="flex flex-col justify-center gap-5"
         >
-          <h1 className="font-mono text-2xl md:text-5xl">
+          <div className="mb-1">
+            <Glass className="glass-card inline-block p-1.5">
+              <img
+                src="/img/profile-hero.jpeg"
+                alt="Portrait of Soham Padia"
+                className="h-36 w-36 md:h-44 md:w-44 rounded-xl object-cover object-center ring-1 ring-white/30"
+              />
+            </Glass>
+          </div>
+
+          <h1 className="font-display text-4xl md:text-6xl leading-[1.08] tracking-tight">
             I build ML systems that solve real problems.
           </h1>
-          <p className="text-[#25b15d]">research → prototype → ship</p>
-          <h2 className="text-xl md:text-2xl opacity-90">
+          <p className="font-meta text-sm tracking-[0.14em] uppercase text-emerald-600 dark:text-emerald-300">
+            research → prototype → ship
+          </p>
+          <h2 className="text-lg md:text-2xl text-slate-800/90 dark:text-white/85 leading-relaxed">
             Feature selection for NLP, AI speaking feedback, secure RL; stack: PyTorch, TensorFlow, React/Next.js.
           </h2>
-
 
           <div className="flex gap-2">
             <GlassButton onClick={() => scrollTo("skill")}>Learn More</GlassButton>
@@ -38,48 +85,91 @@ export const Hero = () => {
           </div>
         </motion.div>
 
-        {/* Right column: portrait in liquid glass */}
         <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ delay: 0.25 }}
-          className="mt-20 mb-10 md:mb-0 md:mt-0 md:basis-3/5 basis-1/2 flex md:p-2 flex-col w-fit justify-center items-center gap-5 animate-[animate_2s_infinite_ease_alternate]"
+          initial={{ opacity: 0, y: 10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.35, delay: 0.12 }}
+          className="flex md:p-2 flex-col justify-center items-start gap-5"
         >
-          <div className="md:w-3/4 font-mono text-slate-800 dark:text-white">
-            <div className="md:text-6xl text-2xl flex w-fit items-baseline gap-1">
-              <p className="whitespace-pre-wrap">Hi, I'm </p>
-              <span className="inline-block">
-                <Typewriter
-                  onInit={(typewriter) => {
-                    typewriter
-                      .typeString("Soham Padia")
-                      .pauseFor(1000)
-                      .deleteChars(11)
-                      .typeString("सोहम पडिया")
-                      .pauseFor(1000)
-                      .deleteChars(10)
-                      .typeString("સોહમ પડિયા")
-                      .pauseFor(1000)
-                      .deleteChars(10)
-                      .typeString("Soham Padia")
-                      .start();
-                  }}
-                />
-              </span>
+          <div className="w-full text-slate-800 dark:text-white">
+            <div className="font-display text-4xl md:text-6xl flex w-fit items-baseline gap-1 leading-tight">
+              <p className="whitespace-pre-wrap">Hi, I'm Soham Padia</p>
             </div>
 
-            {/* Glass-framed portrait */}
-            {/* <div className="mt-6 mb-4">
-              <AvatarGlass src="img/SOHAM.png" alt="Portrait of Soham Padia" />
-            </div> */}
+            <div
+              className="mt-1 w-full max-w-3xl"
+              onMouseEnter={() => setIsPaused(true)}
+              onMouseLeave={() => setIsPaused(false)}
+            >
+              <div className="mb-3 w-full max-w-[24ch]">
+                <div className="relative h-6 flex items-center">
+                  <span className="absolute left-0 right-0 h-px bg-black/20 dark:bg-white/25" />
+                  <div className="relative z-10 flex w-full items-center justify-between">
+                    {ROLE_SLIDES.map((slide, idx) => {
+                      const active = idx === activeSlide;
+                      return (
+                        <button
+                          key={slide.title}
+                          type="button"
+                          onClick={() => setActiveSlide(idx)}
+                          aria-label={`Show role ${idx + 1}: ${slide.title}`}
+                          className="group rounded-full p-1.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400/45"
+                        >
+                          <motion.span
+                            animate={{
+                              width: active ? 10 : 7,
+                              height: active ? 10 : 7,
+                              opacity: active ? 1 : 0.6,
+                            }}
+                            transition={{ duration: 0.2 }}
+                            className="block rounded-full bg-emerald-500 dark:bg-emerald-300 group-hover:opacity-100"
+                          />
+                        </button>
+                      );
+                    })}
+                  </div>
+                </div>
+              </div>
 
-            <h1 className="text-6xl md:text-8xl w-fit tracking-tight">RESEARCHER</h1>
-            <h1 className="text-2xl w-fit opacity-90">LEARNER</h1>
+              <div className="w-full max-w-[24ch] min-h-[3.5rem] md:min-h-[6.5rem]">
+                <AnimatePresence mode="wait">
+                  <motion.h1
+                    key={ROLE_SLIDES[activeSlide].title}
+                    initial={{ opacity: 0, y: 16, filter: "blur(6px)" }}
+                    animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                    exit={{ opacity: 0, y: -16, filter: "blur(6px)" }}
+                    transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
+                    className="font-display whitespace-nowrap text-4xl md:text-6xl lg:text-7xl tracking-tight leading-none"
+                  >
+                    {ROLE_SLIDES[activeSlide].title}
+                  </motion.h1>
+                </AnimatePresence>
+              </div>
 
-            {/* About block (edit this text anytime) */}
-            <div className="md:flex w-fit mt-4">
-              <p className="w-full md:pr-2 font-semibold">About me:</p>
-              <p className="opacity-90">
+              <div className="min-h-[2.5rem] md:min-h-[3rem] w-full max-w-[44ch]">
+                <AnimatePresence mode="wait">
+                  <motion.p
+                    key={ROLE_SLIDES[activeSlide].proof}
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -10 }}
+                    transition={{ duration: 0.35 }}
+                    className="text-sm md:text-base text-slate-700/85 dark:text-white/80 leading-relaxed"
+                  >
+                    {ROLE_SLIDES[activeSlide].proof}
+                  </motion.p>
+                </AnimatePresence>
+              </div>
+            </div>
+
+            <h1 className="font-meta text-lg md:text-xl w-fit opacity-90">LEARNER</h1>
+
+            <div className="md:flex w-full mt-4 text-slate-700/90 dark:text-white/80">
+              <p className="w-full md:w-auto md:pr-3 font-meta text-sm uppercase tracking-[0.12em] text-emerald-600 dark:text-emerald-300">
+                About me
+              </p>
+              <p className="max-w-[65ch] leading-relaxed">
                 Master’s student in Artificial Intelligence at Northeastern University with experience in machine learning, deep learning, and full-stack development. Driven by a passion for building impactful solutions that enhance everyday life and by a commitment to sharing knowledge through open-source and research contributions.
               </p>
             </div>
@@ -87,48 +177,6 @@ export const Hero = () => {
         </motion.div>
       </div>
 
-      {/* Bottom glass badge strip */}
-      <div className="absolute bottom-6 left-1/2 -translate-x-1/2">
-
-        <Glass className="px-3 py-2">
-          <div className="flex flex-wrap items-center gap-2">
-            {[
-              "Applied AI",
-              "NLP",
-              "Computer Vision",
-              "Reinforcement Learning",
-              "Product"
-            ].map((label) => (
-              <motion.span
-                key={label}
-                whileHover={{ y: -1, scale: 1.06 }}
-                whileTap={{ scale: 0.98 }}
-                className={[
-                  "relative inline-flex items-center rounded-full px-3 py-1 text-xs font-medium",
-                  // light theme
-                  "bg-black/5 text-slate-900 ring-1 ring-black/10",
-                  // dark theme
-                  "dark:bg-white/10 dark:text-white/90 dark:ring-white/25",
-                  // liquid-ish interaction
-                  "transition-all hover:px-4 hover:bg-emerald-400/10",
-                  "focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400/40"
-                ].join(" ")}
-              >
-                <span className="relative pl-2">
-                  {/* tiny specular dot */}
-                  <span
-                    className="absolute left-0 top-1/2 -translate-y-1/2 h-1.5 w-1.5 rounded-full
-                       bg-emerald-400/70 shadow-[0_0_10px_2px_rgba(16,185,129,0.35)]"
-                    aria-hidden="true"
-                  />
-                  {label}
-                </span>
-              </motion.span>
-            ))}
-          </div>
-        </Glass>
-
-      </div>
     </section>
   );
 };

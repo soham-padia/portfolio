@@ -1,42 +1,73 @@
 [
-    {
-      "title": "Enhancing Public Speaking Skills through AI-Powered Analysis and Feedback",
-      "description": "This research paper presents an AI-driven application designed to enhance public speaking skills through personalized feedback on voice modulation, facial expressions, and speech content. The system integrates technologies like SpaCy, NLTK, OpenCV, YOLO, OpenAI-Whisper, and SpeechRecognition.",
-      "image": "img/light.webp",
-      "bgColor": "#dedede",
-      "textColor": "#000000",
-      "gitLink": "/path-to-research-paper-1.pdf"
-    },
-    {
-      "title": "Chi Square for Goodness of Fit and Test for Independence Using NLP",
-      "description": "This paper explores the application of NLP techniques to improve the chi-square test for goodness of fit and independence, enhancing accuracy and efficiency in statistical analysis.",
-      "image": "img/dark.webp",
-      "bgColor": "#2a2a2a",
-      "textColor": "#ffffff",
-      "gitLink": "/path-to-research-paper-2.pdf"
-    },
-    {
-      "title": "My Portfolio Project",
-      "description": "Through building this project with React, I gained a wealth of knowledge about Tailwind, JavaScript, and Framer Motion. It even served as a foundation for developing my portfolio website.",
-      "image": "img/light.webp",
-      "bgColor": "#dedede",
-      "textColor": "#000000",
-      "gitLink": "https://github.com/soham-padia/portfolio"
-    },
-    {
-      "title": "A bookings website",
-      "description": "Developed with GoLang, this project taught me a lot about Go, Html, CSS, and Postgresql, and laid the groundwork for a hotel booking website.",
-      "image": "img/dark.webp",
-      "bgColor": "#2a2a2a",
-      "textColor": "#ffffff",
-      "gitLink": "https://github.com/soham-padia/bookings"
-    },
-    {
-      "title": "An Angular website with Supabase as Backend",
-      "description": "Built with Angular, Tailwind, Supabase, and TypeScript, this project helped me improve my Angular and coding skills.",
-      "image": "img/light.webp",
-      "bgColor": "#dedede",
-      "textColor": "#000000",
-      "gitLink": "https://github.com/soham-padia/neoe"
-    }
-  ]
+  {
+    "title": "Scalable ML Inference System for Real-Time Text Classification",
+    "description": "Built a production-grade REST API for text classification with request validation, batching, Dockerized deployment, and Prometheus-backed p95/p99 latency monitoring.",
+    "image": "img/dark.webp",
+    "gitLink": "https://github.com/soham-padia/ml-prod-api",
+    "tags": ["PyTorch", "FastAPI", "Hugging Face", "Docker", "Prometheus"]
+  },
+  {
+    "title": "RAG-Based Algorithms Study Assistant",
+    "description": "Developed a retrieval-augmented assistant over 500+ pages with chunking, embeddings, FAISS search, and context-injected prompting to reduce hallucinations.",
+    "image": "img/light.webp",
+    "gitLink": "https://github.com/soham-padia/rag-algorithms-assistant",
+    "tags": ["RAG", "LangChain", "FAISS", "Sentence-Transformers", "Gradio"]
+  },
+  {
+    "title": "Multi-Agent Learning Under Adversarial Conditions",
+    "description": "Implemented a 16-node simulation with 5 attack families and RL/DRL/MARL agents; achieved strong robustness including F1 up to 1.00 in key scenarios.",
+    "image": "img/dark.webp",
+    "gitLink": "https://github.com/soham-padia/blockchain-iot-trust",
+    "liveLink": "https://arxiv.org/abs/2512.22860",
+    "tags": ["RL", "DRL", "MARL", "Distributed Simulation", "Reproducibility"]
+  },
+  {
+    "title": "NLP Techniques in Chi-Square Tests and Feature Selection",
+    "description": "Research publication on solving chi-square goodness-of-fit and independence problems from natural language using a structured NLP pipeline.",
+    "image": "img/light.webp",
+    "liveLink": "https://doi.org/10.1007/978-981-97-9855-1_10",
+    "tags": ["Publication", "NLP", "Statistical Testing", "Feature Selection"]
+  },
+  {
+    "title": "Enhancing Public Speaking Skills through AI-Powered Analysis and Feedback",
+    "description": "Research publication on multimodal AI feedback for public speaking using speech, NLP, and computer vision signals.",
+    "image": "img/dark.webp",
+    "liveLink": "https://doi.org/10.53555/kuey.v30i5.8524",
+    "tags": ["Publication", "Multimodal AI", "NLP", "Computer Vision"]
+  },
+  {
+    "title": "Mechanistic Interpretability of Transformer Models",
+    "description": "Ran activation patching and targeted head ablations on GPT-2 with reproducible scripts and contrastive analysis to identify causal pathways.",
+    "image": "img/light.webp",
+    "gitLink": "https://github.com/soham-padia/mechanical-interpretability",
+    "tags": ["PyTorch", "TransformerLens", "Interpretability", "GPT-2"]
+  },
+  {
+    "title": "Grokking in Modular Arithmetic: Operator Structure Experiments",
+    "description": "Built a large-scale training and evaluation pipeline for modular arithmetic tasks with visualization of learning dynamics across 200K+ training steps.",
+    "image": "img/dark.webp",
+    "gitLink": "https://github.com/soham-padia/grokking-operators",
+    "tags": ["Transformers", "PyTorch", "HPC", "SLURM", "Experimentation"]
+  },
+  {
+    "title": "Neural Sequential Decoders and Transformers: Tradeoff Analysis",
+    "description": "Implemented n-gram, RNN, and Transformer models from first principles to compare context behavior, failure modes, and architectural tradeoffs.",
+    "image": "img/light.webp",
+    "gitLink": "https://github.com/soham-padia/transformers-from-scratch",
+    "tags": ["Transformers", "RNN", "NLP", "From Scratch", "PyTorch"]
+  },
+  {
+    "title": "Text to Int",
+    "description": "Published a text-to-number normalizer to PyPI with 4,000+ downloads, linear-time parsing, CI, unit tests, and open-source release management.",
+    "image": "img/dark.webp",
+    "gitLink": "https://github.com/soham-padia/textToInt",
+    "liveLink": "https://pypi.org/project/text-to-number/",
+    "tags": ["Python", "Open Source", "PyPI", "Testing", "NLP Utilities"]
+  },
+  {
+    "title": "Enterprise AI Governance and Stability Framework",
+    "description": "Designed a governance framework for enterprise GenAI systems focused on guardrails, output consistency checks, risk scoring, and validation workflows.",
+    "image": "img/light.webp",
+    "tags": ["AI Governance", "Trust & Safety", "Risk Assessment", "Validation"]
+  }
+]

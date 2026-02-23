@@ -53,10 +53,12 @@ export const Navbar = () => {
           </div>
 
           {/* Center: nav links (lg+) */}
-          <ul className="hidden lg:flex items-center gap-6">
+          <ul className="hidden lg:flex items-center gap-4 text-sm">
             {[
               { id: "hero", label: "Home" },
               { id: "skill", label: "Skills" },
+              { id: "experience", label: "Experience" },
+              { id: "research", label: "Research" },
               { id: "project", label: "Projects" },
               { id: "contact", label: "Contact" },
             ].map((item) => (
@@ -91,19 +93,6 @@ export const Navbar = () => {
                 ].join(" ")}
               />
             </div> */}
-
-            {/* Hire CTA */}
-            <GlassButton
-              variant="secondary"
-              onClick={() =>
-                document.getElementById("contact")?.scrollIntoView({
-                  behavior: "smooth",
-                })
-              }
-              className="hidden sm:inline-flex"
-            >
-              Hire Now
-            </GlassButton>
 
             {/* Socials */}
             <div className="flex items-center">

@@ -41,39 +41,6 @@ const TECH = [
   "Kubernetes",
 ];
 
-const METHODS = [
-  { id: "llms", label: "LLMs" },
-  { id: "slms", label: "SLMs" },
-  { id: "lora", label: "LoRA/PEFT" },
-  { id: "rlhf", label: "RLHF" },
-  { id: "metric", label: "Metric Learning" },
-];
-
-const TOOLS = [
-  { id: "pytorch", label: "PyTorch" },
-  { id: "hf", label: "HF/Transformers" },
-  { id: "tf", label: "TensorFlow" },
-  { id: "opencv", label: "OpenCV" },
-  { id: "nltk", label: "NLTK" },
-  { id: "jupyter", label: "Jupyter" },
-  { id: "wandb", label: "Weights & Biases" },
-  { id: "docker", label: "Docker/K8s" },
-  { id: "aws", label: "AWS" },
-  { id: "gcp", label: "GCP" },
-  { id: "react", label: "React" },
-  { id: "next", label: "Next.js" },
-];
-
-// Optionally tweak domain labels if you want longer text:
-const DOMAINS = [
-  { id: "nlp", label: "NLP" },
-  { id: "cv", label: "Computer Vision" },
-  { id: "rl", label: "Reinforcement Learning" },
-  { id: "speech", label: "Speech" },
-  { id: "bioai", label: "Biomedical AI" },
-  { id: "sci", label: "Scientific Computing" },
-];
-
 const PLATFORMS = ["Linux", "Windows", "Android", "Web", "MacOS"];
 
 export const Skills = () => {
@@ -83,33 +50,30 @@ export const Skills = () => {
   return (
     <motion.section
       id="skill"
-      className="md:h-screen flex snap-center justify-center items-center"
-      initial={{ opacity: 0 }}
-      whileInView={{ opacity: 1 }}
+      className="section-wrap"
+      initial={{ opacity: 0, y: 10 }}
+      whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-80px" }}
-      transition={{ duration: 0.25 }}
+      transition={{ duration: 0.3 }}
     >
-      <div className="w-screen max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10 px-4 md:px-8">
-        {/* Left: Skill web inside a glass frame */}
+      <div className="section-inner">
+        <div className="section-header">
+          <p className="section-kicker">Capabilities</p>
+          <h2 className="section-title">Skills</h2>
+          <p className="section-subtitle">What I use to design, build, and ship applied AI systems.</p>
+          <div className="section-rule" />
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10">
         <div className="flex items-center justify-center">
-          <Glass className="p-3 md:p-4 overflow-hidden">
+          <Glass className="glass-card p-3 md:p-4 overflow-hidden">
             <SkillWeb variant="compact" />
           </Glass>
         </div>
 
-
-        {/* Right: Skills content */}
         <div className="flex flex-col gap-6 md:gap-8">
-          <div>
-            <h1 className="font-mono text-4xl md:text-5xl tracking-tight">
-              SKILLS
-            </h1>
-            <p className="mt-1 text-[#25b15d]">What I work with</p>
-          </div>
-
-          {/* Languages */}
-          <Glass className="p-5">
-            <h3 className="text-lg font-semibold text-slate-900 dark:text-white">
+          <Glass className="glass-card p-5">
+            <h3 className="font-display text-2xl font-semibold text-slate-900 dark:text-white">
               Languages
             </h3>
             <div className="mt-3 flex flex-wrap gap-2">
@@ -119,9 +83,8 @@ export const Skills = () => {
             </div>
           </Glass>
 
-          {/* Technologies / Frameworks */}
-          <Glass className="p-5">
-            <h3 className="text-lg font-semibold text-slate-900 dark:text-white">
+          <Glass className="glass-card p-5">
+            <h3 className="font-display text-2xl font-semibold text-slate-900 dark:text-white">
               Technologies / Frameworks
             </h3>
             <div className="mt-3 flex flex-wrap gap-2">
@@ -131,10 +94,9 @@ export const Skills = () => {
             </div>
           </Glass>
 
-          {/* Platforms + CTA */}
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
-            <Glass className="p-5 sm:col-span-2">
-              <h3 className="text-lg font-semibold text-slate-900 dark:text-white">
+            <Glass className="glass-card p-5 sm:col-span-2">
+              <h3 className="font-display text-2xl font-semibold text-slate-900 dark:text-white">
                 Platforms
               </h3>
               <div className="mt-3 flex flex-wrap gap-2">
@@ -144,13 +106,14 @@ export const Skills = () => {
               </div>
             </Glass>
 
-            <Glass className="p-5 flex items-center justify-center">
+            <Glass className="glass-card p-5 flex items-center justify-center">
               <GlassButton onClick={scrollToProjects} className="w-full">
                 See Projects
               </GlassButton>
             </Glass>
           </div>
         </div>
+      </div>
       </div>
     </motion.section>
   );

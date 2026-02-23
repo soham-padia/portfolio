@@ -3,7 +3,7 @@
 @tailwind components;
 @tailwind utilities;
 
-/* ---------- Helpers you already had (cleaned) ---------- */
+/* ---------- Helpers ---------- */
 
 .bg-gif {
   background-image: url('img/sale2.gif');
@@ -19,47 +19,15 @@
   background-repeat: no-repeat;
 }
 
-.source-code-pro {
-  font-family: "Source Code Pro", monospace;
-  font-optical-sizing: auto;
-  font-weight: 600;
-  font-style: normal;
-}
-
-/* DM Mono families */
-.dm-mono-light { font-family: "DM Mono", monospace; font-weight: 300; font-style: normal; }
-.dm-mono-regular { font-family: "DM Mono", monospace; font-weight: 500; font-style: normal; }
-.dm-mono-medium { font-family: "DM Mono", monospace; font-weight: 1000; font-style: normal; }
-.dm-mono-light-italic { font-family: "DM Mono", monospace; font-weight: 300; font-style: italic; }
-.dm-mono-regular-italic { font-family: "DM Mono", monospace; font-weight: 400; font-style: italic; }
-.dm-mono-medium-italic { font-family: "DM Mono", monospace; font-weight: 500; font-style: italic; }
-
-/* Smooth transitions helper */
-.transition-all { transition: all 0.3s ease-in-out; }
-
-/* Tilt Prism helper */
-.custom-font {
-  font-family: "Tilt Prism", monospace;
-  font-weight: 800;
-  font-style: normal;
-  font-variation-settings: "XROT" 0, "YROT" 0;
-}
-
-/* Optional subtle noise utility (use by adding class="noise") */
-.noise::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  background-image: radial-gradient(rgba(255,255,255,.08) 1px, transparent 1px);
-  background-size: 2px 2px;
-  opacity: .2;
-}
-
 /* ---------- Theme backgrounds: DOT GRID in both modes ---------- */
 :root { color-scheme: light dark; }
 html, body, #root { height: 100%; }
-body { @apply antialiased; }
+html { scroll-behavior: smooth; }
+body {
+  @apply antialiased text-slate-900 dark:text-white;
+  font-family: "Space Grotesk", sans-serif;
+  line-height: 1.65;
+}
 
 :root {
   --dot-size: 2px;
@@ -76,6 +44,7 @@ body:not(.dark) {
     linear-gradient(180deg, #ffffff 0%, #f6f7fb 100%);
   background-size: var(--dot-gap) var(--dot-gap), auto;
   background-position: var(--dot-offset) var(--dot-offset), center;
+  background-attachment: fixed, fixed;
 }
 
 /* Dark mode (dots + bokeh scene) */
@@ -89,10 +58,69 @@ body:not(.dark) {
   background-position:
     var(--dot-offset) var(--dot-offset),
     center, center, center;
+  background-attachment: fixed, fixed, fixed, fixed;
 }
 
 /* Slightly soften dots on tiny screens */
 @media (max-width: 480px) {
   :root { --dot-light: rgba(0,0,0,0.14); }
   .dark body { --dot-dark: rgba(255,255,255,0.08); }
+}
+
+.font-display {
+  font-family: "Crimson Pro", serif;
+}
+
+.font-meta,
+.font-mono {
+  font-family: "JetBrains Mono", monospace;
+}
+
+@layer components {
+  .section-wrap {
+    @apply px-5 md:px-10 py-16 md:py-20;
+  }
+
+  .section-inner {
+    @apply mx-auto max-w-6xl;
+  }
+
+  .section-header {
+    @apply mb-8 md:mb-10;
+  }
+
+  .section-kicker {
+    @apply font-meta text-xs uppercase tracking-[0.2em] text-emerald-600 dark:text-emerald-300;
+  }
+
+  .section-title {
+    @apply font-display text-3xl md:text-5xl font-semibold tracking-tight text-slate-900 dark:text-white;
+  }
+
+  .section-subtitle {
+    @apply mt-2 max-w-3xl text-sm md:text-base text-slate-700/80 dark:text-white/75;
+  }
+
+  .section-rule {
+    @apply mt-4 h-px w-full max-w-sm bg-gradient-to-r from-black/20 to-transparent dark:from-white/25;
+  }
+
+  .glass-card {
+    @apply transition-transform duration-300 ease-out;
+    will-change: transform;
+  }
+
+  .glass-card:hover {
+    transform: translateY(-6px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .glass-card {
+    transition: none;
+  }
+  .glass-card:hover {
+    transform: none;
+  }
 }

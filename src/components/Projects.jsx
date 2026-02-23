@@ -6,8 +6,6 @@ import { Glass, GlassButton, GlassPill } from "./glass";
 export const Projects = () => {
   const [projects, setProjects] = useState([]);
   const [state, setState] = useState({ loading: true, error: null });
-  // replace fetch('/projects.json') ...
-  const base = import.meta.env.BASE_URL;
 
   useEffect(() => {
     let alive = true;
@@ -30,12 +28,11 @@ export const Projects = () => {
   }, []);
 
   if (state.loading) {
-    // Skeleton shimmer
     return (
-      <section id="project" className="p-5 md:p-10">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <section id="project" className="section-wrap">
+        <div className="section-inner grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {Array.from({ length: 6 }).map((_, i) => (
-            <Glass key={i} className="p-4 sm:p-5">
+            <Glass key={i} className="glass-card p-4 sm:p-5">
               <div className="animate-pulse">
                 <div className="h-40 w-full rounded-xl bg-white/10 mb-4" />
                 <div className="h-4 w-3/4 bg-white/10 rounded mb-2" />
@@ -51,38 +48,39 @@ export const Projects = () => {
 
   if (state.error) {
     return (
-      <section id="project" className="p-5 md:p-10">
-        <Glass className="p-5">
+      <section id="project" className="section-wrap">
+        <div className="section-inner">
+          <Glass className="p-5">
           <p className="text-red-300 dark:text-red-300">
             Couldn’t load projects: {state.error}
           </p>
-        </Glass>
+          </Glass>
+        </div>
       </section>
     );
   }
 
   return (
-    <section id="project" className="p-5 md:p-10">
-      <div className="mx-auto max-w-6xl mb-6">
-        <h2 className="text-2xl md:text-3xl font-semibold tracking-tight text-slate-900 dark:text-white">
-          Projects
-        </h2>
-        <p className="opacity-80 text-slate-800 dark:text-white/80">
-          A few things I’ve built and shipped.
-        </p>
+    <section id="project" className="section-wrap">
+      <div className="section-inner">
+        <div className="section-header">
+          <p className="section-kicker">Builds</p>
+          <h2 className="section-title">Projects</h2>
+          <p className="section-subtitle">A selection of work spanning ML systems, research engineering, and applied GenAI.</p>
+          <div className="section-rule" />
+        </div>
       </div>
 
-      <div className="mx-auto max-w-6xl grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="section-inner grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {projects.map((p, idx) => (
           <motion.div
             key={p.title ?? idx}
-            initial={{ opacity: 0, y: 8 }}
+            initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-50px" }}
-            transition={{ duration: 0.2, delay: idx * 0.03 }}
+            viewport={{ once: true, margin: "-60px" }}
+            transition={{ duration: 0.25, delay: idx * 0.03 }}
           >
-            <Glass className="group h-full p-4 sm:p-5 flex flex-col">
-              {/* Image */}
+            <Glass className="glass-card group h-full p-4 sm:p-5 flex flex-col">
               {p.image ? (
                 <div className="relative overflow-hidden rounded-xl mb-4">
                   <img
@@ -91,15 +89,13 @@ export const Projects = () => {
                     loading="lazy"
                     className="w-full h-44 object-cover transition-transform duration-300 group-hover:scale-[1.03]"
                   />
-                  {/* optional overlay tint if bg needs contrast */}
                   <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
                 </div>
               ) : (
                 <div className="h-44 rounded-xl bg-white/5 ring-1 ring-white/10 mb-4" />
               )}
 
-              {/* Title + description */}
-              <h3 className="text-lg font-semibold text-slate-900 dark:text-white">
+              <h3 className="font-display text-2xl font-semibold text-slate-900 dark:text-white leading-tight">
                 {p.title || "Untitled Project"}
               </h3>
               {p.tags && Array.isArray(p.tags) && p.tags.length > 0 && (
@@ -113,10 +109,8 @@ export const Projects = () => {
                 {p.description || "No description provided."}
               </p>
 
-              {/* Spacer */}
               <div className="flex-1" />
 
-              {/* Actions */}
               <div className="mt-4 flex items-center gap-2">
                 {p.gitLink && (
                   <a href={p.gitLink} target="_blank" rel="noopener noreferrer">
