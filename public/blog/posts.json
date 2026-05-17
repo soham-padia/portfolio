@@ -1,0 +1,11 @@
+[
+  {
+    "slug": "scout-refiner-bottleneck",
+    "file": "scout-refiner-bottleneck/post.md",
+    "title": "The Scout-Refiner Bottleneck: A Negative Result with a Surprising Twist",
+    "date": "2026-05-17",
+    "tags": ["ML", "Architecture", "Negative Results"],
+    "epistemicStatus": "Negative results from a small-scale (~125M param) experiment. The architecture is genuinely novel; none of that helped.",
+    "excerpt": "I designed a two-stage attention module with a width bottleneck, expecting it to be more parameter-efficient than standard MHA. At equal token budget, the baseline beats every variant by 0.19–0.31 nats. But there's a crossover: at short training budgets, one variant actually wins."
+  }
+]

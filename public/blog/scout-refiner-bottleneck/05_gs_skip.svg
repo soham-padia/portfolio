@@ -1,0 +1,99 @@
+<svg width="100%" viewBox="0 0 680 640" role="img" xmlns="http://www.w3.org/2000/svg">
+<title>Gated skip mechanism</title>
+<desc>The gated skip used in GS: the input z fans into three paths — scout attention output, a learned sigmoid gate, and a skip projection. The gate is multiplied element-wise with the skip, then added to the scout output before the refiner stage.</desc>
+<defs>
+<style>
+.t { font: 14px sans-serif; fill: #2C2C2A; }
+.ts { font: 12px sans-serif; fill: #5F5E5A; }
+.th { font: 500 14px sans-serif; fill: #2C2C2A; }
+.arr { stroke: #5F5E5A; stroke-width: 1.5; fill: none; }
+.c-gray rect, .c-gray circle { fill: #F1EFE8; stroke: #5F5E5A; }
+.c-gray text, .c-gray .th, .c-gray .ts { fill: #2C2C2A; }
+.c-purple rect, .c-purple circle { fill: #EEEDFE; stroke: #534AB7; }
+.c-purple text, .c-purple .th, .c-purple .ts { fill: #3C3489; }
+.c-teal rect, .c-teal circle { fill: #E1F5EE; stroke: #0F6E56; }
+.c-teal text, .c-teal .th, .c-teal .ts { fill: #085041; }
+.c-amber rect, .c-amber circle { fill: #FAEEDA; stroke: #BA7517; }
+.c-amber text, .c-amber .th, .c-amber .ts { fill: #854F0B; }
+.c-coral rect, .c-coral circle { fill: #FAECE7; stroke: #D85A30; }
+.c-coral text, .c-coral .th, .c-coral .ts { fill: #993C1D; }
+</style>
+<marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker>
+</defs>
+
+<g class="c-gray">
+<rect x="240" y="30" width="200" height="44" rx="8" stroke-width="0.5"/>
+<text class="th" x="340" y="48" text-anchor="middle" dominant-baseline="central">z = LayerNorm₁(x)</text>
+<text class="ts" x="340" y="64" text-anchor="middle" dominant-baseline="central">(B, T, 768)</text>
+</g>
+
+<circle cx="340" cy="90" r="3" fill="#5F5E5A"/>
+<line x1="340" y1="74" x2="340" y2="90" class="arr"/>
+<line x1="120" y1="90" x2="560" y2="90" stroke="#5F5E5A" stroke-width="1" fill="none"/>
+<line x1="120" y1="90" x2="120" y2="140" class="arr" marker-end="url(#arrow)"/>
+<line x1="340" y1="90" x2="340" y2="140" class="arr" marker-end="url(#arrow)"/>
+<line x1="560" y1="90" x2="560" y2="140" class="arr" marker-end="url(#arrow)"/>
+
+<g class="c-purple">
+<rect x="40" y="140" width="160" height="80" rx="8" stroke-width="0.5"/>
+<text class="th" x="120" y="162" text-anchor="middle" dominant-baseline="central">Scout attention</text>
+<text class="ts" x="120" y="182" text-anchor="middle" dominant-baseline="central">+ project down</text>
+<text class="ts" x="120" y="202" text-anchor="middle" dominant-baseline="central">D → D_s</text>
+</g>
+
+<g class="c-amber">
+<rect x="260" y="140" width="160" height="80" rx="8" stroke-width="0.5"/>
+<text class="th" x="340" y="162" text-anchor="middle" dominant-baseline="central">Gate projection</text>
+<text class="ts" x="340" y="182" text-anchor="middle" dominant-baseline="central">sigmoid(W_gate · z + b)</text>
+<text class="ts" x="340" y="202" text-anchor="middle" dominant-baseline="central">(B, T, 384) in [0, 1]</text>
+</g>
+
+<g class="c-teal">
+<rect x="480" y="140" width="160" height="80" rx="8" stroke-width="0.5"/>
+<text class="th" x="560" y="162" text-anchor="middle" dominant-baseline="central">Skip projection</text>
+<text class="ts" x="560" y="182" text-anchor="middle" dominant-baseline="central">W_skip · z, no bias</text>
+<text class="ts" x="560" y="202" text-anchor="middle" dominant-baseline="central">D → D_s</text>
+</g>
+
+<line x1="340" y1="220" x2="340" y2="270" class="arr"/>
+<line x1="560" y1="220" x2="560" y2="270" class="arr"/>
+<line x1="340" y1="270" x2="420" y2="270" stroke="#5F5E5A" stroke-width="1" fill="none"/>
+<line x1="560" y1="270" x2="480" y2="270" stroke="#5F5E5A" stroke-width="1" fill="none"/>
+<line x1="420" y1="270" x2="420" y2="295" class="arr" marker-end="url(#arrow)"/>
+<line x1="480" y1="270" x2="480" y2="295" class="arr" marker-end="url(#arrow)"/>
+
+<g class="c-gray">
+<rect x="400" y="295" width="100" height="44" rx="8" stroke-width="0.5"/>
+<text class="th" x="450" y="313" text-anchor="middle" dominant-baseline="central">gate ⊙ skip</text>
+<text class="ts" x="450" y="329" text-anchor="middle" dominant-baseline="central">element-wise</text>
+</g>
+
+<line x1="120" y1="220" x2="120" y2="395" class="arr"/>
+<line x1="450" y1="339" x2="450" y2="395" class="arr"/>
+<line x1="120" y1="395" x2="320" y2="395" stroke="#5F5E5A" stroke-width="1" fill="none"/>
+<line x1="450" y1="395" x2="360" y2="395" stroke="#5F5E5A" stroke-width="1" fill="none"/>
+<line x1="320" y1="395" x2="320" y2="410" class="arr" marker-end="url(#arrow)"/>
+<line x1="360" y1="395" x2="360" y2="410" class="arr" marker-end="url(#arrow)"/>
+
+<g class="c-gray">
+<circle cx="340" cy="425" r="18" stroke-width="0.5"/>
+<text class="th" x="340" y="425" text-anchor="middle" dominant-baseline="central">+</text>
+</g>
+<text class="ts" x="380" y="428" text-anchor="start">scout + (gate ⊙ skip)</text>
+
+<line x1="340" y1="443" x2="340" y2="480" class="arr" marker-end="url(#arrow)"/>
+
+<g class="c-coral">
+<rect x="200" y="480" width="280" height="56" rx="8" stroke-width="0.5"/>
+<text class="th" x="340" y="500" text-anchor="middle" dominant-baseline="central">Refiner stage</text>
+<text class="ts" x="340" y="520" text-anchor="middle" dominant-baseline="central">LN → attention → project up</text>
+</g>
+
+<g class="c-amber">
+<rect x="40" y="560" width="600" height="64" rx="8" stroke-width="0.5"/>
+<text class="th" x="340" y="580" text-anchor="middle" dominant-baseline="central">Learned per-position, per-channel control</text>
+<text class="ts" x="340" y="600" text-anchor="middle" dominant-baseline="central">Gate → 1: pass the raw token through. Gate → 0: trust the scout, suppress skip.</text>
+<text class="ts" x="340" y="616" text-anchor="middle" dominant-baseline="central">Init around 0.5 everywhere; +295K params per block vs SR.</text>
+</g>
+
+</svg>

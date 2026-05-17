@@ -10,9 +10,9 @@
 
 ### Adaptive Trust Consensus for Blockchain IoT
 - **Venue:** arXiv
-- **Year:** 2025 (ongoing extension)
+- **Duration:** Oct 2024 - Dec 2025
 - **Link:** [https://arxiv.org/abs/2512.22860](https://arxiv.org/abs/2512.22860)
-- **Summary:** Designed a trust-consensus framework using RL/DRL/MARL agents under adversarial settings for blockchain-enabled IoT networks; current work extends this line with comparative RL-model analysis for blockchain security.
+- **Summary:** Designed a trust-consensus framework using RL/DRL/MARL agents under adversarial settings for blockchain-enabled IoT networks and completed comparative RL-model analysis for blockchain security.
 - **Keywords:** RL, DRL, MARL, Blockchain IoT
 
 ### NLP Techniques in Chi-Square Tests and Feature Selection
@@ -28,11 +28,3 @@
 - **Link:** [https://doi.org/10.53555/kuey.v30i5.8524](https://doi.org/10.53555/kuey.v30i5.8524)
 - **Summary:** Built a multimodal feedback framework combining speech, NLP, and computer vision signals for public-speaking improvement.
 - **Keywords:** Multimodal AI, NLP, Computer Vision
-
-## Ongoing Work
-
-### Comparative Study of Reinforcement Learning Models for Blockchain Security
-- **Status:** In Progress
-- **Summary:** Ongoing comparative analysis of RL-family models for attack resilience, consensus stability, and robustness in decentralized systems.
-- **Relation to prior work:** Continuation/extension of the Adaptive Trust Consensus research thread.
-- **Keywords:** RL, Security, Blockchain

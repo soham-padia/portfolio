@@ -1,0 +1,26 @@
+[
+  {
+    "title": "Adaptive Trust Consensus for Blockchain IoT",
+    "venue": "arXiv",
+    "year": "Oct 2024 - Dec 2025",
+    "summary": "Designed a trust-consensus framework using RL/DRL/MARL agents under adversarial settings for blockchain-enabled IoT networks and completed a comparative analysis of RL-model behavior for blockchain security.",
+    "link": "https://arxiv.org/abs/2512.22860",
+    "tags": ["RL", "DRL", "MARL", "Blockchain IoT"]
+  },
+  {
+    "title": "NLP Techniques in Chi-Square Tests and Feature Selection",
+    "venue": "Springer",
+    "year": "2025",
+    "summary": "Proposed an NLP pipeline to interpret natural-language statistical prompts and solve chi-square goodness-of-fit and independence test tasks.",
+    "link": "https://doi.org/10.1007/978-981-97-9855-1_10",
+    "tags": ["NLP", "Statistics", "Feature Selection"]
+  },
+  {
+    "title": "Enhancing Public Speaking Skills through AI-Powered Analysis and Feedback",
+    "venue": "KUEY",
+    "year": "2024",
+    "summary": "Built a multimodal feedback framework combining speech, NLP, and computer vision signals for public-speaking improvement.",
+    "link": "https://doi.org/10.53555/kuey.v30i5.8524",
+    "tags": ["Multimodal AI", "NLP", "Computer Vision"]
+  }
+]

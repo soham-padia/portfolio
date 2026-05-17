@@ -1,13 +1,13 @@
 // src/components/Navbar.jsx
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 import { GrLinkedinOption, GrGithub, GrInstagram } from "react-icons/gr";
 import { Glass, GlassButton, GlassPill, useTheme } from "./glass";
 
 export const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [theme, setTheme] = useTheme();
-
   useEffect(() => {
     const scroller = document.querySelector(".overflow-scroll");
 
@@ -76,6 +76,14 @@ export const Navbar = () => {
                 {item.label}
               </motion.li>
             ))}
+            <motion.li>
+              <Link
+                to="/blog"
+                className="text-emerald-600 dark:text-emerald-400"
+              >
+                Blog
+              </Link>
+            </motion.li>
           </ul>
 
           {/* Right: search + actions */}

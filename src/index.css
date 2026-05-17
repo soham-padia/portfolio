@@ -125,3 +125,174 @@ body:not(.dark) {
     transform: none;
   }
 }
+
+/* ---------- Blog page: strip dot grid, solid background only ---------- */
+body.blog-page {
+  background: #ffffff !important;
+  background-image: none !important;
+}
+.dark body.blog-page {
+  background: #111113 !important;
+  background-image: none !important;
+}
+
+/* ---------- Blog prose (LessWrong-style) ---------- */
+.prose-blog {
+  font-family: "Crimson Pro", serif;
+  font-size: 1.125rem;
+  line-height: 1.8;
+  color: #1c1c1e;
+}
+.dark .prose-blog { color: #dde1ea; }
+
+.prose-blog h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+  margin-top: 0;
+  margin-bottom: 0.75rem;
+  color: #0f0f10;
+}
+.dark .prose-blog h1 { color: #f0f0f5; }
+
+.prose-blog h2 {
+  font-size: 1.45rem;
+  font-weight: 600;
+  margin-top: 2.75rem;
+  margin-bottom: 0.6rem;
+  color: #1c1c1e;
+}
+.dark .prose-blog h2 { color: #e2e2e8; }
+
+.prose-blog h3 {
+  font-size: 1.15rem;
+  font-weight: 600;
+  margin-top: 2rem;
+  margin-bottom: 0.4rem;
+}
+
+.prose-blog p { margin-bottom: 1.25rem; }
+
+.prose-blog a {
+  color: #059669;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.dark .prose-blog a { color: #34d399; }
+
+.prose-blog strong { font-weight: 700; }
+.prose-blog em { font-style: italic; }
+
+.prose-blog hr {
+  border: none;
+  border-top: 1px solid #e2e8f0;
+  margin: 2.5rem 0;
+}
+.dark .prose-blog hr { border-color: #2d3748; }
+
+/* Tables */
+.prose-blog table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.78rem;
+  margin: 1.75rem 0;
+  overflow-x: auto;
+  display: block;
+}
+.prose-blog th,
+.prose-blog td {
+  border: 1px solid #e2e8f0;
+  padding: 0.4rem 0.75rem;
+  text-align: left;
+  white-space: nowrap;
+}
+.dark .prose-blog th,
+.dark .prose-blog td { border-color: #2d3748; }
+.prose-blog th {
+  background: #f8fafc;
+  font-weight: 600;
+}
+.dark .prose-blog th { background: #1a2236; }
+
+/* Code */
+.prose-blog code {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.82em;
+  background: #f1f5f9;
+  padding: 0.1em 0.35em;
+  border-radius: 3px;
+}
+.dark .prose-blog code { background: #1e293b; }
+
+.prose-blog pre {
+  background: #0f172a;
+  color: #e2e8f0;
+  padding: 1.25rem 1.5rem;
+  border-radius: 8px;
+  overflow-x: auto;
+  font-size: 0.82rem;
+  line-height: 1.7;
+  margin: 1.75rem 0;
+}
+.dark .prose-blog pre { background: #020617; }
+.prose-blog pre code { background: none; padding: 0; color: inherit; font-size: inherit; }
+
+/* Blockquote */
+.prose-blog blockquote {
+  border-left: 3px solid #10b981;
+  padding-left: 1rem;
+  margin: 1.5rem 0;
+  color: #475569;
+  font-style: italic;
+}
+.dark .prose-blog blockquote { color: #94a3b8; }
+
+/* Lists */
+.prose-blog ul,
+.prose-blog ol {
+  padding-left: 1.6rem;
+  margin-bottom: 1.25rem;
+}
+.prose-blog li { margin-bottom: 0.3rem; }
+
+/* Footnotes */
+.prose-blog [data-footnotes] {
+  margin-top: 3rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #e2e8f0;
+  font-size: 0.875rem;
+  color: #64748b;
+  font-family: "Space Grotesk", sans-serif;
+}
+.dark .prose-blog [data-footnotes] {
+  border-color: #2d3748;
+  color: #94a3b8;
+}
+.prose-blog [data-footnotes] p { margin-bottom: 0.5rem; }
+.prose-blog [data-footnotes] h2 {
+  /* "Footnotes" heading is visually hidden by remark-gfm */
+  display: none;
+}
+
+/* Footnote back-refs and superscript refs */
+.prose-blog sup { line-height: 0; }
+.prose-blog sup a {
+  color: #10b981;
+  text-decoration: none;
+  font-size: 0.72em;
+  font-family: "JetBrains Mono", monospace;
+}
+
+/* sr-only utility used by remark-gfm */
+.prose-blog .sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
