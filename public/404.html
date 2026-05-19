@@ -7,7 +7,7 @@
     // GitHub Pages SPA redirect for project repos (e.g. user.github.io/repo/).
     // Keeps the first path segment (/portfolio) then encodes the rest as a
     // query string so index.html can restore it via history.replaceState.
-    var pathSegmentsToKeep = 1;
+    var pathSegmentsToKeep = 0;
     var l = window.location;
     l.replace(
       l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') +

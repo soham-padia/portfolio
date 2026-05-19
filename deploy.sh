@@ -3,7 +3,7 @@ set -e
 
 PAGES_REPO="https://github.com/soham-padia/soham-padia.github.io.git"
 PAGES_DIR="/tmp/soham-padia.github.io"
-DIST_DIR="$(dirname "$0")/dist"
+DIST_DIR="$(cd "$(dirname "$0")" && pwd)/dist"
 
 echo "→ Building..."
 npm run build

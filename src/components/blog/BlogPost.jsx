@@ -18,10 +18,15 @@ export const BlogPost = () => {
   const [error, setError] = useState(false);
   const [activeId, setActiveId] = useState('');
 
-  // Solid background — no dot grid
+  // Solid background — no dot grid; reset title on unmount
   useEffect(() => {
     document.body.classList.add('blog-page');
-    return () => document.body.classList.remove('blog-page');
+    return () => {
+      document.body.classList.remove('blog-page');
+      document.title = 'Soham Padia – ML Engineer & Researcher (Northeastern University)';
+      const metaDesc = document.querySelector('meta[name="description"]');
+      if (metaDesc) metaDesc.setAttribute('content', 'Soham Padia is a Master\'s student in AI at Northeastern University. Projects and publications in Machine Learning, NLP, Computer Vision, Reinforcement Learning, and full-stack development.');
+    };
   }, []);
 
   // Load post
@@ -33,6 +38,12 @@ export const BlogPost = () => {
         const post = posts.find(p => p.slug === slug);
         if (!post) { navigate('/blog', { replace: true }); return; }
         setMeta(post);
+
+        // Update page title and meta description for this post
+        document.title = `${post.title} — Soham Padia`;
+        const metaDesc = document.querySelector('meta[name="description"]');
+        if (metaDesc) metaDesc.setAttribute('content', post.excerpt);
+
         const mdRes = await fetch(`${import.meta.env.BASE_URL}blog/${post.file}`);
         if (!mdRes.ok) throw new Error();
         setContent(await mdRes.text());
